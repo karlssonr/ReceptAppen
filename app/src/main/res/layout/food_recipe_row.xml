@@ -6,23 +6,70 @@
     android:layout_height="wrap_content">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/image_food_recipe"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="5dp"
+        android:layout_height="280dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="30dp"
+        android:adjustViewBounds="true"
+        android:contentDescription="image"
+        app:layout_constraintBottom_toTopOf="@+id/textView_food_recipe_title"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/ic_launcher" />
+        app:srcCompat="@drawable/tomatsoppa" />
 
     <TextView
-        android:id="@+id/food_recipe_title"
-        android:layout_width="0dp"
+        android:id="@+id/textView_food_recipe_title"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="30dp"
+        android:fontFamily="Josefin Sans"
         android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textAlignment="center"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/image_food_recipe" />
+
+    <TextView
+        android:id="@+id/textView_food_catagory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/round_corner_veg"
+        android:fontFamily="Acumin Pro"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="0dp"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/textView_time_to_cook"
+        app:layout_constraintTop_toBottomOf="@+id/image_food_recipe" />
+
+    <TextView
+        android:id="@+id/textView_time_to_cook"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="5dp"
+        android:fontFamily="Acumin Pro"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:textColor="@android:color/white"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="0dp"
+        android:background="@drawable/round_corner_cook_time"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image_food_recipe" />
 </androidx.constraintlayout.widget.ConstraintLayout>

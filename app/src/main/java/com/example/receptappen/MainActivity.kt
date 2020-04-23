@@ -8,11 +8,13 @@ import android.widget.Button
 
 class MainActivity : AppCompatActivity() {
 
-    val logInButton = findViewById<View>(R.id.log_in_button)
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val logInButton = findViewById<View>(R.id.log_in_button)
 
         logInButton.setOnClickListener {
            val intent = Intent(this, HomeScreenRecycle::class.java)

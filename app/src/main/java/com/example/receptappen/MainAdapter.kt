@@ -8,8 +8,11 @@ import kotlinx.android.synthetic.main.food_recipe_row.view.*
 
 class MainAdapter: RecyclerView.Adapter<CustomViewHolder>() {
 
+    val recipeTitles = listOf<String>("Tomat Soppa")
+    val foodCategories = listOf<String>("KÖTT","VEG","FÅGEL","FISK","DESSERT")
+
     override fun getItemCount(): Int {
-        return 3
+        return recipeTitles.size
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomViewHolder {
@@ -20,7 +23,11 @@ class MainAdapter: RecyclerView.Adapter<CustomViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
-       // holder?.view?.food_recipe_title.text = "Spagetti bolognese"
+        val recipeTitle = recipeTitles.get(position)
+        holder?.view?.textView_food_recipe_title.text = recipeTitle
+        holder?.view?.textView_food_catagory.text = "VEG"
+        holder?.view?.textView_time_to_cook.text = "20m"
+
 
 
     }
