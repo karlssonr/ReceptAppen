@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.food_recipe_row.view.*
 
 class MainAdapter: RecyclerView.Adapter<CustomViewHolder>() {
 
@@ -19,13 +20,14 @@ class MainAdapter: RecyclerView.Adapter<CustomViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
+       // holder?.view?.food_recipe_title.text = "Spagetti bolognese"
 
-        TODO("Not yet implemented")
+
     }
 
 
 }
 
-class CustomViewHolder(v: View): RecyclerView.ViewHolder(v) {
+class CustomViewHolder(val view: View): RecyclerView.ViewHolder(view) {
 
 }
