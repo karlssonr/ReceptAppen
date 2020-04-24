@@ -24,10 +24,10 @@ class MainAdapter: RecyclerView.Adapter<CustomViewHolder>() {
 
     override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
         val recipeTitle = recipeTitles.get(position)
-        holder?.view?.textView_food_recipe_title.text = recipeTitle
+ /*       holder?.view?.textView_food_recipe_title.text = recipeTitle
         holder?.view?.textView_food_catagory.text = "VEG"
         holder?.view?.textView_time_to_cook.text = "20m"
-
+*/
 
 
     }
