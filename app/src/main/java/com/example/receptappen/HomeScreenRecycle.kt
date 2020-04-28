@@ -20,5 +20,8 @@ class HomeScreenRecycle : AppCompatActivity() {
         recyclerView_food_category.layoutManager = LinearLayoutManager(this, OrientationHelper.HORIZONTAL, false)
         recyclerView_food_category.adapter = AdapterFoodCategory()
 
+        recyclerView_category_and_recipe.layoutManager = LinearLayoutManager(this, OrientationHelper.HORIZONTAL, false)
+        recyclerView_category_and_recipe.adapter = AdapterRecipeAndCategory()
+
     }
 }

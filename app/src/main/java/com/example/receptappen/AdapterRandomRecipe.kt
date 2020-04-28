@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.random_recipe_row.view.*
+import kotlinx.android.synthetic.main.food_recipe_row.view.*
 
 class AdapterRandomRecipe: RecyclerView.Adapter<CustomViewHolder>() {
 
@@ -17,7 +17,7 @@ class AdapterRandomRecipe: RecyclerView.Adapter<CustomViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomViewHolder {
         val layoutInflater = LayoutInflater.from(parent?.context)
-        val cellForRow = layoutInflater.inflate(R.layout.random_recipe_row, parent, false)
+        val cellForRow = layoutInflater.inflate(R.layout.food_recipe_row, parent, false)
         return CustomViewHolder(cellForRow)
 
     }

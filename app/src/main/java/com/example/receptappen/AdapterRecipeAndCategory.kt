@@ -3,29 +3,28 @@ package com.example.receptappen
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.random_recipe_row.view.*
 
 class AdapterRecipeAndCategory: RecyclerView.Adapter<CustomViewHolder>() {
 
-    val recipeTitles = listOf<String>("Tomat Soppa")
-    val foodCategories = listOf<String>("KÖTT","VEG","FÅGEL","FISK","DESSERT")
+   // val recipeTitles = listOf<String>("Tomat Soppa")
+   // val foodCategories = listOf<String>("KÖTT","VEG","FÅGEL","FISK","DESSERT")
 
     override fun getItemCount(): Int {
-        return recipeTitles.size
+        return 7
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomViewHolder {
         val layoutInflater = LayoutInflater.from(parent?.context)
-        val cellForRow = layoutInflater.inflate(R.layout.random_recipe_row, parent, false)
+        val cellForRow = layoutInflater.inflate(R.layout.popular_row, parent, false)
         return CustomViewHolder(cellForRow)
 
     }
 
     override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
-        val recipeTitle = recipeTitles.get(position)
-        holder?.view?.textView_food_recipe_title.text = recipeTitle
-        holder?.view?.textView_food_catagory.text = "VEG"
-        holder?.view?.textView_time_to_cook.text = "20m"
+       // val recipeTitle = recipeTitles.get(position)
+      //  holder?.view?.textView_food_recipe_title.text = recipeTitle
+      //  holder?.view?.textView_food_catagory.text = "VEG"
+      //  holder?.view?.textView_time_to_cook.text = "20m"
 
 
 
