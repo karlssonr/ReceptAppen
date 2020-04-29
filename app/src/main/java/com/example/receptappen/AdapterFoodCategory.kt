@@ -23,8 +23,6 @@ class AdapterFoodCategory: RecyclerView.Adapter<CustomViewHolderCategory>() {
     }
 
     override fun onBindViewHolder(holder: CustomViewHolderCategory, position: Int) {
-        //val recipeTitle = recipeTitles.get(position)
-       // holder?.view?.textView_food_recipe_title.text = recipeTitle
         holder?.view?.textView_category.text = "VEG"
 
 
