@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_bar_home"
+        android:title="Hem"
+        android:icon="@drawable/ic_home_black_24dp"/>
+
+    <item
+        android:id="@+id/nav_bar_profile"
+        android:title="Profil"
+        android:icon="@drawable/ic_perm_identity_black_24dp"/>
+
+
+    <item
+        android:id="@+id/nav_bar_favorite"
+        android:title="Favoriter"
+        android:icon="@drawable/ic_favorite_border_black_24dp"/>
+
+
+
+</menu>
