@@ -4,7 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
 
 class MainActivity : AppCompatActivity() {
 
@@ -16,8 +15,10 @@ class MainActivity : AppCompatActivity() {
 
         val logInButton = findViewById<View>(R.id.log_in_button)
 
+
+
         logInButton.setOnClickListener {
-           val intent = Intent(this, HomeScreenRecycle::class.java)
+           val intent = Intent(this, HomeScreenActivity::class.java)
            startActivity(intent)
         }
     }

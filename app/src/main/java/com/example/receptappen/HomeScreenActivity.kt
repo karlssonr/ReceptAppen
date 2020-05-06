@@ -2,38 +2,39 @@ package com.example.receptappen
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
+import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.OrientationHelper
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.navigation.NavigationView
-
+import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_home_screen_recycle.*
 
-class HomeScreenRecycle : AppCompatActivity() {
+
+class HomeScreenActivity : AppCompatActivity() {
 
     private val onNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
 
         when(item.itemId) {
             R.id.nav_bar_home -> {
-                val intent = Intent(this, HomeScreenRecycle::class.java)
+                val intent = Intent(this, HomeScreenActivity::class.java)
                 startActivity(intent)
-               // replaceFragment(HomeFragment())
+                replaceFragment(HomeFragment())
                 return@OnNavigationItemSelectedListener true
             }
             R.id.nav_bar_profile -> {
-/*                val intent = Intent(this, HomeScreenRecycle::class.java)
-                startActivity(intent)*/
-               // replaceFragment(ProfileFragment())
+                val intent = Intent(this, HomeScreenActivity::class.java)
+                startActivity(intent)
+                replaceFragment(ProfileFragment())
                 return@OnNavigationItemSelectedListener true
             }
             R.id.nav_bar_favorite -> {
-                val intent = Intent(this, AdapterAddPhoto::class.java)
+                val intent = Intent(this, HomeScreenActivity::class.java)
                 startActivity(intent)
-              //  replaceFragment(FavoriteFragment())
+                replaceFragment(FavoriteFragment())
                 return@OnNavigationItemSelectedListener true
             }
 
@@ -47,6 +48,32 @@ class HomeScreenRecycle : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_screen_recycle)
 
+        val db = FirebaseFirestore.getInstance()
+
+        // Create a new user with a first and last name
+
+        // Create a new user with a first and last name
+        val user: MutableMap<String, Any> = HashMap()
+        user["first"] = "Ada"
+        user["last"] = "Lovelace"
+        user["born"] = 1815
+
+// Add a new document with a generated ID
+
+// Add a new document with a generated ID
+        db.collection("users")
+            .add(user)
+            .addOnSuccessListener { documentReference ->
+                Log.d(
+                    "!!!",
+                    "DocumentSnapshot added with ID: " + documentReference.id
+                )
+            }
+            .addOnFailureListener { e -> Log.w("!!!", "Error adding document", e) }
+
+
+
+
         recyclerView_random_recipe.layoutManager = LinearLayoutManager(this)
         recyclerView_random_recipe.adapter = AdapterRandomRecipe()
 
@@ -54,20 +81,18 @@ class HomeScreenRecycle : AppCompatActivity() {
         recyclerView_food_category.adapter = AdapterFoodCategory()
 
         recyclerView_category_and_recipe.layoutManager = LinearLayoutManager(this, OrientationHelper.HORIZONTAL, false)
-        recyclerView_category_and_recipe.adapter = AdapterRecipeAndCategory()
+        recyclerView_category_and_recipe.adapter = AdapterPopularRow()
 
         bottomNavigation.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
-     //   replaceFragment(HomeFragment())
+        replaceFragment(HomeFragment())
 
     }
 
-/*
     private fun replaceFragment(fragment: Fragment) {
         val fragmentTransaction = supportFragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.fragmentContainer, fragment)
         fragmentTransaction.commit()
 
     }
-*/
 
 }

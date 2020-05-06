@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
-class AdapterRecipeAndCategory: RecyclerView.Adapter<CustomViewHolder>() {
+class AdapterPopularRow: RecyclerView.Adapter<CustomViewHolder>() {
 
 
 

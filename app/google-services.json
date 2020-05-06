@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "607505722187",
+    "firebase_url": "https://receptappen-bea84.firebaseio.com",
+    "project_id": "receptappen-bea84",
+    "storage_bucket": "receptappen-bea84.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:607505722187:android:02cbdf9c02266b46ba56ce",
+        "android_client_info": {
+          "package_name": "com.example.receptappen"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "607505722187-2ojsagcr8n3d3itpsr7v6sji8ljlbceg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBBa1TQfo4DWXALUsqXxVRWn5_eMIyzaqA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "607505722187-2ojsagcr8n3d3itpsr7v6sji8ljlbceg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
