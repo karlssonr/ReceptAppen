@@ -43,14 +43,14 @@ class HomeScreenActivity : AppCompatActivity() {
         }
     }
 
-    @SuppressLint("WrongConstant")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_screen_recycle)
 
-        val db = FirebaseFirestore.getInstance()
 
-        // Create a new user with a first and last name
+
+
+/*
 
         // Create a new user with a first and last name
         val user: MutableMap<String, Any> = HashMap()
@@ -58,7 +58,7 @@ class HomeScreenActivity : AppCompatActivity() {
         user["last"] = "Lovelace"
         user["born"] = 1815
 
-// Add a new document with a generated ID
+
 
 // Add a new document with a generated ID
         db.collection("users")
@@ -70,6 +70,7 @@ class HomeScreenActivity : AppCompatActivity() {
                 )
             }
             .addOnFailureListener { e -> Log.w("!!!", "Error adding document", e) }
+*/
 
 
 

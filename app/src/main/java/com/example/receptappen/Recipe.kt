@@ -1,5 +1,11 @@
 package com.example.receptappen
 
-class Recipe(title: String, category: String, cookTime: String, image: String, ingredients: String, description: String ) {
+data class Recipe(var title: String = "",
+             var category: String = "",
+             var cookTime: String = "",
+             var image: String = "",
+             var ingredients: String = "",
+             var description: String = "") {
+
     
 }
