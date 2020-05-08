@@ -96,7 +96,15 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/recyclerView_random_recipe" />
 
-
+            <Button
+                android:id="@+id/go_to_create_recipe_activity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="CreateRecipeActivity"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/recyclerView_category_and_recipe" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,16 +1,13 @@
 package com.example.receptappen
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.OrientationHelper
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_home_screen_recycle.*
 
 
@@ -47,6 +44,12 @@ class HomeScreenActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_screen_recycle)
 
+        val goToCreateRecipeActivityButton = findViewById<View>(R.id.go_to_create_recipe_activity)
+
+        goToCreateRecipeActivityButton.setOnClickListener {
+            val intent = Intent(this, ActivityCreateRecipe::class.java)
+            startActivity(intent)
+        }
 
 
 

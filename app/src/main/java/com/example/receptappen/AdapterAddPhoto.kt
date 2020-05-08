@@ -14,7 +14,7 @@ class AdapterAddPhoto: RecyclerView.Adapter<CustomViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomViewHolder {
         val layoutInflater = LayoutInflater.from(parent?.context)
-        val cellForRow = layoutInflater.inflate(R.layout.activity_create_recipe, parent, false)
+        val cellForRow = layoutInflater.inflate(R.layout.add_photo_row, parent, false)
         return CustomViewHolder(cellForRow)
 
     }
