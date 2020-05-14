@@ -15,12 +15,12 @@ class AdapterAddPhoto(private val context: Context): RecyclerView.Adapter<Adapte
         return 1
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+/*    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
-        val cellForRow = layoutInflater.inflate(R.layout.add_photo_row, parent, false)
-        return ViewHolder(cellForRow)
+*//*        val cellForRow = layoutInflater.inflate(R.layout.add_photo_row, parent, false)
+        return ViewHolder(cellForRow)*//*
 
-    }
+    }*/
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
@@ -35,6 +35,10 @@ class AdapterAddPhoto(private val context: Context): RecyclerView.Adapter<Adapte
         val addPhotoImage = itemView.findViewById<View>(R.id.add_photo_image)
 
 
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        TODO("Not yet implemented")
     }
 
 
