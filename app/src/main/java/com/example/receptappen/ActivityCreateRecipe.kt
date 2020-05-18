@@ -26,15 +26,20 @@ import java.io.ByteArrayOutputStream
 import java.io.IOException
 import android.Manifest
 import android.widget.Button
+import android.widget.EditText
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.gms.tasks.Continuation
 import com.google.android.gms.tasks.OnFailureListener
 import com.google.android.gms.tasks.OnSuccessListener
 import com.google.android.gms.tasks.Task
+import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.storage.UploadTask
 import java.util.*
 
 
 class ActivityCreateRecipe : AppCompatActivity() {
+
+
 
 
     private var imagePreview: ImageView? = null
@@ -43,6 +48,10 @@ class ActivityCreateRecipe : AppCompatActivity() {
     private var firebaseStorage: FirebaseStorage? = null
     private var storageReference: StorageReference? = null
 
+    lateinit var ingredientTextInput : EditText
+    lateinit var volumeTextInput : EditText
+    lateinit var ingredientsRecyclerView: RecyclerView
+
 
 
 
@@ -50,7 +59,25 @@ class ActivityCreateRecipe : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_recipe)
 
+        ingredientTextInput = findViewById(R.id.text_input_ingredient)
+        volumeTextInput = findViewById(R.id.text_input_volume)
+
+        val addIngrediensButton = findViewById<Button>(R.id.button_add_ingrediens)
+
+        addIngrediensButton.setOnClickListener {
+            addNewIngredient()
+            ingredientsRecyclerView.adapter?.notifyDataSetChanged()
+
+
+        }
+
+
+
         val uploadImageButton = findViewById<Button>(R.id.save_recipe_button) as Button
+        ingredientsRecyclerView = findViewById<RecyclerView>(R.id.recyclerView_ingredients)
+
+        ingredientsRecyclerView.layoutManager = LinearLayoutManager(this)
+        ingredientsRecyclerView.adapter = AdapterAddIngrediens(this, DataStorage.ingredients)
 
         imagePreview = findViewById<ImageView>(R.id.add_photo_image) as ImageView
 
@@ -86,6 +113,15 @@ class ActivityCreateRecipe : AppCompatActivity() {
         }
 
 
+    }
+
+
+    fun addNewIngredient() {
+        val ingredient = ingredientTextInput.text.toString()
+        val volume = volumeTextInput.text.toString()
+
+        val newIngredient = Ingredient(ingredient, volume)
+        DataStorage.ingredients.add(newIngredient)
     }
 
     private fun pickImageFromGallery() {
