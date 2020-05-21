@@ -1,39 +1,28 @@
 package com.example.receptappen
 
+import android.Manifest
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.graphics.Bitmap
-import android.graphics.drawable.BitmapDrawable
-import android.media.Image
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
-import android.view.View
+import android.widget.Button
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.google.android.gms.tasks.OnFailureListener
+import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
-import kotlinx.android.synthetic.main.activity_create_recipe.*
-import kotlinx.android.synthetic.main.activity_home_screen_recycle.*
-import java.io.ByteArrayOutputStream
-import java.io.IOException
-import android.Manifest
-import android.widget.Button
-import android.widget.EditText
-import androidx.recyclerview.widget.RecyclerView
-import com.google.android.gms.tasks.Continuation
-import com.google.android.gms.tasks.OnFailureListener
-import com.google.android.gms.tasks.OnSuccessListener
-import com.google.android.gms.tasks.Task
-import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.storage.UploadTask
+import kotlinx.android.synthetic.main.activity_create_recipe.*
+import java.io.IOException
 import java.util.*
 
 
@@ -48,9 +37,18 @@ class ActivityCreateRecipe : AppCompatActivity() {
     private var firebaseStorage: FirebaseStorage? = null
     private var storageReference: StorageReference? = null
 
+
     lateinit var ingredientTextInput : EditText
     lateinit var volumeTextInput : EditText
+    lateinit var titleTextInput : EditText
+    lateinit var descriptionTextInput : EditText
+    lateinit var imageUrl : String
+    lateinit var ingredientsToRecipe : MutableList<String>
+
     lateinit var ingredientsRecyclerView: RecyclerView
+
+
+    val db = FirebaseFirestore.getInstance()
 
 
 
@@ -64,7 +62,9 @@ class ActivityCreateRecipe : AppCompatActivity() {
 
         val addIngrediensButton = findViewById<Button>(R.id.button_add_ingrediens)
 
+
         addIngrediensButton.setOnClickListener {
+
             addNewIngredient()
             ingredientsRecyclerView.adapter?.notifyDataSetChanged()
 
@@ -73,7 +73,10 @@ class ActivityCreateRecipe : AppCompatActivity() {
 
 
 
-        val uploadImageButton = findViewById<Button>(R.id.save_recipe_button) as Button
+
+
+
+        val saveRecipeButton = findViewById<Button>(R.id.save_recipe_button) as Button
         ingredientsRecyclerView = findViewById<RecyclerView>(R.id.recyclerView_ingredients)
 
         ingredientsRecyclerView.layoutManager = LinearLayoutManager(this)
@@ -83,6 +86,8 @@ class ActivityCreateRecipe : AppCompatActivity() {
 
         firebaseStorage = FirebaseStorage.getInstance()
         storageReference = FirebaseStorage.getInstance().reference
+
+
 
 
 
@@ -108,8 +113,9 @@ class ActivityCreateRecipe : AppCompatActivity() {
             }
         }
 
-        uploadImageButton.setOnClickListener {
+        saveRecipeButton.setOnClickListener {
             uploadImage()
+
         }
 
 
@@ -118,10 +124,11 @@ class ActivityCreateRecipe : AppCompatActivity() {
 
     fun addNewIngredient() {
         val ingredient = ingredientTextInput.text.toString()
-        val volume = volumeTextInput.text.toString()
+        //val volume = volumeTextInput.text.toString()
 
-        val newIngredient = Ingredient(ingredient, volume)
+        val newIngredient = ingredient
         DataStorage.ingredients.add(newIngredient)
+       // ingredientsToRecipe.add(ingredient)
     }
 
     private fun pickImageFromGallery() {
@@ -180,6 +187,9 @@ class ActivityCreateRecipe : AppCompatActivity() {
         if(filePath != null){
             val ref = storageReference?.child("uploads/" + UUID.randomUUID().toString())
             ref?.putFile(filePath!!)?.addOnSuccessListener(OnSuccessListener<UploadTask.TaskSnapshot> {
+                imageUrl = ref.downloadUrl.toString()
+                uploadRecipe()
+
                 Toast.makeText(this, "Image Uploaded", Toast.LENGTH_SHORT).show()
             })?.addOnFailureListener(OnFailureListener { e ->
                 Toast.makeText(this, "Image Uploading Failed " + e.message, Toast.LENGTH_SHORT).show()
@@ -188,6 +198,12 @@ class ActivityCreateRecipe : AppCompatActivity() {
             Toast.makeText(this, "Please Select an Image", Toast.LENGTH_SHORT).show()
         }
     }
+
+    private fun uploadRecipe() {
+        val recipe = Recipe(titleTextInput?.text.toString(),"", "", imageUrl, DataStorage.ingredients?.toString(), descriptionTextInput?.text.toString() )
+        db.collection("recipes").add(recipe)
+    }
+
 
 }
 

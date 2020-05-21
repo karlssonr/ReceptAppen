@@ -3,7 +3,7 @@ package com.example.receptappen
 object DataStorage {
 
 
-    val ingredients = mutableListOf<Ingredient>()
+    val ingredients = mutableListOf<String>()
 
 
 /*

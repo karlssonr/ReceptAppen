@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class AdapterAddIngrediens(private val context: Context, private val ingredients: List<Ingredient>) : RecyclerView.Adapter<AdapterAddIngrediens.ViewHolder>() {
+class AdapterAddIngrediens(private val context: Context, private val ingredients: List<String>) : RecyclerView.Adapter<AdapterAddIngrediens.ViewHolder>() {
 
 
     private val layoutInflator = LayoutInflater.from(context)
@@ -31,8 +31,8 @@ class AdapterAddIngrediens(private val context: Context, private val ingredients
 
         val ingredient = ingredients[position]
 
-        holder.textIngrediens.text = ingredient.ingredient
-        holder.textVolume.text = ingredient.volume
+        holder.textIngrediens.text = ingredient
+       // holder.textVolume.text = ingredient.volume
     }
 
 
