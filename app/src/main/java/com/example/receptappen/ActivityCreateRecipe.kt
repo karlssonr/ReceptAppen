@@ -8,10 +8,7 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -24,6 +21,7 @@ import com.google.firebase.storage.UploadTask
 import kotlinx.android.synthetic.main.activity_create_recipe.*
 import java.io.IOException
 import java.util.*
+import kotlin.collections.ArrayList
 
 
 class ActivityCreateRecipe : AppCompatActivity() {
@@ -59,8 +57,17 @@ class ActivityCreateRecipe : AppCompatActivity() {
 
         ingredientTextInput = findViewById(R.id.text_input_ingredient)
         volumeTextInput = findViewById(R.id.text_input_volume)
+        titleTextInput = findViewById(R.id.text_input_title)
+        descriptionTextInput = findViewById(R.id.text_input_description)
 
         val addIngrediensButton = findViewById<Button>(R.id.button_add_ingrediens)
+        val categoryList = arrayOf("VEGITARISK", "KÖTT" , "FÅGEL", "FISK", "DESSERT")
+
+        val spinnerAdapter = ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, categoryList)
+
+        spinner_category.adapter = spinnerAdapter
+
+
 
 
         addIngrediensButton.setOnClickListener {
@@ -115,6 +122,7 @@ class ActivityCreateRecipe : AppCompatActivity() {
 
         saveRecipeButton.setOnClickListener {
             uploadImage()
+
 
         }
 

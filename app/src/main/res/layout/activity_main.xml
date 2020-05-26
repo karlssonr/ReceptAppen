@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-   >
+    android:background="#FFFFFF"
+    tools:context=".MainActivity">
 
     <TextView
         android:id="@+id/textView_receptAppen"
@@ -28,44 +28,46 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="50dp"
-        android:layout_marginBottom="60dp"
+        android:layout_marginTop="100dp"
         android:fontFamily="serif"
         android:text="Logga in"
-        app:layout_constraintBottom_toTopOf="@+id/emailText"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_receptAppen" />
 
     <Button
         android:id="@+id/log_in_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="150dp"
+        android:layout_marginTop="50dp"
         android:text="Button"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/passwordText" />
 
     <EditText
         android:id="@+id/emailText"
         android:layout_width="308dp"
         android:layout_height="60dp"
         android:layout_marginStart="50dp"
+        android:layout_marginTop="44dp"
         android:layout_marginEnd="50dp"
-        android:layout_marginBottom="30dp"
         android:ems="10"
         android:inputType="textEmailAddress"
-        app:layout_constraintBottom_toTopOf="@+id/passwordText"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_logga_in" />
 
     <EditText
         android:id="@+id/passwordText"
         android:layout_width="307dp"
         android:layout_height="61dp"
-        android:layout_marginBottom="50dp"
+        android:layout_marginTop="30dp"
         android:ems="10"
         android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/log_in_button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/emailText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
