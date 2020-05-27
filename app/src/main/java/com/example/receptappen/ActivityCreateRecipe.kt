@@ -15,11 +15,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.gms.tasks.OnFailureListener
 import com.google.android.gms.tasks.OnSuccessListener
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.UploadTask
 import kotlinx.android.synthetic.main.activity_create_recipe.*
+import kotlinx.android.synthetic.main.activity_create_recipe.bottomNavigation
+import kotlinx.android.synthetic.main.activity_home_screen_recycle.*
 import java.io.IOException
 import java.util.*
 import kotlin.collections.ArrayList
@@ -50,6 +53,38 @@ class ActivityCreateRecipe : AppCompatActivity() {
 
 
     val db = FirebaseFirestore.getInstance()
+
+
+    private val onNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
+
+        when(item.itemId) {
+            R.id.nav_bar_home -> {
+                val intent = Intent(this, HomeScreenActivity::class.java)
+                startActivity(intent)
+                /* replaceFragment(HomeFragment())*/
+                return@OnNavigationItemSelectedListener true
+            }
+            R.id.nav_bar_profile -> {
+                val intent = Intent(this, HomeScreenActivity::class.java)
+                startActivity(intent)
+                return@OnNavigationItemSelectedListener true
+            }
+/*            R.id.nav_bar_add -> {
+                val intent = Intent(this, ActivityCreateRecipe::class.java)
+                startActivity(intent)
+                return@OnNavigationItemSelectedListener true
+            }*/
+            R.id.nav_bar_favorite -> {
+                val intent = Intent(this, HomeScreenActivity::class.java)
+                startActivity(intent)
+                /*replaceFragment(FavoriteFragment())*/
+                return@OnNavigationItemSelectedListener true
+            }
+
+
+            else -> false
+        }
+    }
 
 
 
@@ -155,6 +190,7 @@ class ActivityCreateRecipe : AppCompatActivity() {
 
         }
 
+        bottomNavigation.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
 
     }
 

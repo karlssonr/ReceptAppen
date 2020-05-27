@@ -11,6 +11,11 @@
         android:title="Profil"
         android:icon="@drawable/ic_perm_identity_black_24dp"/>
 
+    <item
+        android:id="@+id/nav_bar_add"
+        android:title="Recept"
+        android:icon="@drawable/ic_add_black_24dp"/>
+
 
     <item
         android:id="@+id/nav_bar_favorite"

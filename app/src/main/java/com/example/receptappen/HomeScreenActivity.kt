@@ -3,6 +3,7 @@ package com.example.receptappen
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
@@ -25,13 +26,17 @@ class HomeScreenActivity : AppCompatActivity() {
             R.id.nav_bar_home -> {
                 val intent = Intent(this, HomeScreenActivity::class.java)
                 startActivity(intent)
-                replaceFragment(HomeFragment())
+               /* replaceFragment(HomeFragment())*/
                 return@OnNavigationItemSelectedListener true
             }
             R.id.nav_bar_profile -> {
                 val intent = Intent(this, HomeScreenActivity::class.java)
                 startActivity(intent)
-                replaceFragment(ProfileFragment())
+                return@OnNavigationItemSelectedListener true
+            }
+            R.id.nav_bar_add -> {
+                val intent = Intent(this, ActivityCreateRecipe::class.java)
+                startActivity(intent)
                 return@OnNavigationItemSelectedListener true
             }
             R.id.nav_bar_favorite -> {
@@ -51,12 +56,8 @@ class HomeScreenActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_screen_recycle)
 
-        val goToCreateRecipeActivityButton = findViewById<View>(R.id.go_to_create_recipe_activity)
+        val randomRecipeImage = findViewById<ImageView>(R.id.imageView_random_recipe)
 
-        goToCreateRecipeActivityButton.setOnClickListener {
-            val intent = Intent(this, ActivityCreateRecipe::class.java)
-            startActivity(intent)
-        }
 
 
         val recipeList = mutableListOf<Recipe>()
@@ -69,6 +70,13 @@ class HomeScreenActivity : AppCompatActivity() {
                     recipeList.add(newRecipe!!)
                 println("!!! : ${newRecipe}")
             }
+        }
+
+        for (recipe in recipeList) {
+            if (recipe.title == "test") {
+
+            }
+
         }
 
 
@@ -98,7 +106,7 @@ class HomeScreenActivity : AppCompatActivity() {
         recyclerView_category_and_recipe.adapter = AdapterPopularRow()
 
         bottomNavigation.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
-        replaceFragment(HomeFragment())
+        /*replaceFragment(HomeFragment())*/
 
     }
 
