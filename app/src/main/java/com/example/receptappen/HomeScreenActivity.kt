@@ -5,13 +5,19 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.OrientationHelper
+import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.QuerySnapshot
 import kotlinx.android.synthetic.main.activity_home_screen_recycle.*
 
 
 class HomeScreenActivity : AppCompatActivity() {
+
+    val db = FirebaseFirestore.getInstance()
 
     private val onNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
 
@@ -40,6 +46,7 @@ class HomeScreenActivity : AppCompatActivity() {
         }
     }
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_screen_recycle)
@@ -52,34 +59,37 @@ class HomeScreenActivity : AppCompatActivity() {
         }
 
 
+        val recipeList = mutableListOf<Recipe>()
+        val recipeRef = db.collection("recipes")
 
-/*
-
-        // Create a new user with a first and last name
-        val user: MutableMap<String, Any> = HashMap()
-        user["first"] = "Ada"
-        user["last"] = "Lovelace"
-        user["born"] = 1815
-
-
-
-// Add a new document with a generated ID
-        db.collection("users")
-            .add(user)
-            .addOnSuccessListener { documentReference ->
-                Log.d(
-                    "!!!",
-                    "DocumentSnapshot added with ID: " + documentReference.id
-                )
+        recipeRef.get().addOnSuccessListener { documentSnapshot ->
+            for (document in documentSnapshot.documents) {
+                val newRecipe = document.toObject(Recipe::class.java)
+                if (newRecipe != null)
+                    recipeList.add(newRecipe!!)
+                println("!!! : ${newRecipe}")
             }
-            .addOnFailureListener { e -> Log.w("!!!", "Error adding document", e) }
-*/
+        }
 
 
 
 
-        recyclerView_random_recipe.layoutManager = LinearLayoutManager(this)
-        recyclerView_random_recipe.adapter = AdapterRandomRecipe()
+
+
+/*        db.collection("users")
+            .get()
+            .addOnCompleteListener(OnCompleteListener<QuerySnapshot> { task ->
+                if (task.isSuccessful) {
+                    for (document in task.result!!) {
+                        Log.d(
+                            FragmentActivity.TAG,
+                            document.id + " => " + document.data
+                        )
+                    }
+                } else {
+                    Log.w(FragmentActivity.TAG, "Error getting documents.", task.exception)
+                }
+            })*/
 
         recyclerView_food_category.layoutManager = LinearLayoutManager(this, OrientationHelper.HORIZONTAL, false)
         recyclerView_food_category.adapter = AdapterFoodCategory()

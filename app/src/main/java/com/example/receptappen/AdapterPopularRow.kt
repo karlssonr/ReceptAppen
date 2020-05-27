@@ -1,10 +1,11 @@
 package com.example.receptappen
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
-class AdapterPopularRow: RecyclerView.Adapter<CustomViewHolder>() {
+class AdapterPopularRow: RecyclerView.Adapter<AdapterPopularRow.CustomViewHolder>() {
 
 
 
@@ -23,6 +24,11 @@ class AdapterPopularRow: RecyclerView.Adapter<CustomViewHolder>() {
 
 
     }
+
+    class CustomViewHolder(val view: View): RecyclerView.ViewHolder(view) {
+
+    }
+
 
 
 }
