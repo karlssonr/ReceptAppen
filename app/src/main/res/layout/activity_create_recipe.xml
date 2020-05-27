@@ -21,7 +21,7 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="1205dp">
+                android:layout_height="1336dp">
 
 
                 <androidx.cardview.widget.CardView
@@ -194,25 +194,6 @@
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </androidx.cardview.widget.CardView>
 
-                <Button
-                    android:id="@+id/save_recipe_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="100dp"
-                    android:layout_marginBottom="75dp"
-                    android:background="#21B04C"
-                    android:elevation="2dp"
-                    android:fontFamily="@font/josefin_sans_bold"
-                    android:paddingLeft="20dp"
-                    android:paddingRight="20dp"
-                    android:text="SPARA RECEPT"
-                    android:textColor="#FFFFFF"
-                    android:textSize="18sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/cardView_cook_time"
-                    app:strokeWidth="0dp" />
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cardView_titel"
@@ -336,11 +317,10 @@
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cardView_category"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="115dp"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="24dp"
                     android:layout_marginEnd="16dp"
-                    android:layout_marginBottom="16dp"
                     app:cardBackgroundColor="#1A000000"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -374,16 +354,16 @@
                             app:layout_constraintStart_toEndOf="@+id/imageView8"
                             app:layout_constraintTop_toTopOf="parent" />
 
-<Spinner
-android:id="@+id/spinner_category"
-android:layout_width="0dp"
-android:layout_height="wrap_content"
-android:layout_margin="16dp"
-android:background="@drawable/spinner_backround"
-android:spinnerMode="dropdown"
-app:layout_constraintEnd_toEndOf="parent"
-app:layout_constraintStart_toStartOf="parent"
-app:layout_constraintTop_toBottomOf="@+id/textView7" />
+                        <Spinner
+                            android:id="@+id/spinner_category"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="16dp"
+                            android:background="@drawable/spinner_backround"
+                            android:spinnerMode="dropdown"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -433,8 +413,8 @@ app:layout_constraintTop_toBottomOf="@+id/textView7" />
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="16dp"
-                            android:layout_marginEnd="16dp"
                             android:layout_marginTop="16dp"
+                            android:layout_marginEnd="16dp"
                             android:layout_marginBottom="16dp"
                             android:background="#FFFFFF"
                             app:layout_constraintBottom_toBottomOf="parent"
@@ -451,13 +431,26 @@ app:layout_constraintTop_toBottomOf="@+id/textView7" />
                         </com.google.android.material.textfield.TextInputLayout>
 
 
-
-
-
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </androidx.cardview.widget.CardView>
 
-
+                <Button
+                    android:id="@+id/save_recipe_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#21B04C"
+                    android:elevation="2dp"
+                    android:fontFamily="@font/josefin_sans_bold"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:text="SPARA RECEPT"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/cardView_cook_time"
+                    app:strokeWidth="0dp" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
