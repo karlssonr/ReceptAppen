@@ -39,7 +39,7 @@ class AdapterAddIngrediens(private val context: Context, private val ingredients
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
 
         val textIngrediens = itemView.findViewById<TextView>(R.id.textView_ingredient)
-        val textVolume = itemView.findViewById<TextView>(R.id.textView_volume)
+        /*val textVolume = itemView.findViewById<TextView>(R.id.textView_volume)*/
 
 
     }

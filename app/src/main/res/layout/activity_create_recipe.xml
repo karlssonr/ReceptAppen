@@ -104,34 +104,20 @@
                         android:layout_height="match_parent">
 
                         <com.google.android.material.textfield.TextInputLayout
-                            android:layout_width="131dp"
-                            android:layout_height="56dp"
+                            android:id="@+id/textInputLayout"
+                            android:layout_width="0dp"
+                            android:layout_height="55dp"
+                            android:layout_marginStart="8dp"
                             android:layout_marginTop="8dp"
                             android:layout_marginEnd="8dp"
                             android:background="#FFFFFF"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/recyclerView_ingredients">
-
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/text_input_volume"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:hint="Mått" />
-                        </com.google.android.material.textfield.TextInputLayout>
-
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/textInputLayout"
-                            android:layout_width="218dp"
-                            android:layout_height="55dp"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginTop="8dp"
-                            android:background="#FFFFFF"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/recyclerView_ingredients">
 
                             <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/text_input_ingredient"
-                                android:layout_width="match_parent"
+                                android:layout_width="358dp"
                                 android:layout_height="wrap_content"
                                 android:hint="Ingrediens" />
                         </com.google.android.material.textfield.TextInputLayout>
@@ -438,6 +424,8 @@
                     android:id="@+id/save_recipe_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginBottom="75dp"
                     android:background="#21B04C"
                     android:elevation="2dp"
                     android:fontFamily="@font/josefin_sans_bold"

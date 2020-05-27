@@ -8,6 +8,7 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.MediaStore
+import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -42,6 +43,8 @@ class ActivityCreateRecipe : AppCompatActivity() {
     lateinit var descriptionTextInput : EditText
     lateinit var imageUrl : String
     lateinit var ingredientsToRecipe : MutableList<String>
+    lateinit var choosenCategory : String
+    lateinit var cookTimeTextInput : String
 
     lateinit var ingredientsRecyclerView: RecyclerView
 
@@ -55,17 +58,43 @@ class ActivityCreateRecipe : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_recipe)
 
+        cookTimeTextInput = ""
+
+
+
         ingredientTextInput = findViewById(R.id.text_input_ingredient)
-        volumeTextInput = findViewById(R.id.text_input_volume)
+       // volumeTextInput = findViewById(R.id.text_input_volume)
         titleTextInput = findViewById(R.id.text_input_title)
         descriptionTextInput = findViewById(R.id.text_input_description)
 
         val addIngrediensButton = findViewById<Button>(R.id.button_add_ingrediens)
-        val categoryList = arrayOf("VEGITARISK", "KÖTT" , "FÅGEL", "FISK", "DESSERT")
+        val categoryList = arrayOf("VEG", "KÖTT" , "FÅGEL", "FISK", "DESSERT")
+
+
+
 
         val spinnerAdapter = ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, categoryList)
 
         spinner_category.adapter = spinnerAdapter
+
+        spinner_category.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+                TODO("Not yet implemented")
+            }
+
+            override fun onItemSelected(
+                parent: AdapterView<*>?,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                choosenCategory = categoryList[position]
+            }
+
+        }
+
+
 
 
 
@@ -208,7 +237,8 @@ class ActivityCreateRecipe : AppCompatActivity() {
     }
 
     private fun uploadRecipe() {
-        val recipe = Recipe(titleTextInput?.text.toString(),"", "", imageUrl, DataStorage.ingredients?.toString(), descriptionTextInput?.text.toString() )
+        val recipe = Recipe(titleTextInput?.text.toString(), choosenCategory,  cookTimeTextInput,imageUrl, DataStorage.ingredients?.toString(), descriptionTextInput?.text.toString() )
+
         db.collection("recipes").add(recipe)
     }
 
