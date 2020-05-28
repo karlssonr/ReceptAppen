@@ -47,7 +47,7 @@ class ActivityCreateRecipe : AppCompatActivity() {
     lateinit var imageUrl : String
     lateinit var ingredientsToRecipe : MutableList<String>
     lateinit var choosenCategory : String
-    lateinit var cookTimeTextInput : String
+    lateinit var cookTimeTextInput : EditText
 
     lateinit var ingredientsRecyclerView: RecyclerView
 
@@ -93,10 +93,10 @@ class ActivityCreateRecipe : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_recipe)
 
-        cookTimeTextInput = ""
 
 
 
+        cookTimeTextInput = findViewById(R.id.text_input_cook_time)
         ingredientTextInput = findViewById(R.id.text_input_ingredient)
        // volumeTextInput = findViewById(R.id.text_input_volume)
         titleTextInput = findViewById(R.id.text_input_title)
@@ -273,7 +273,7 @@ class ActivityCreateRecipe : AppCompatActivity() {
     }
 
     private fun uploadRecipe() {
-        val recipe = Recipe(titleTextInput?.text.toString(), choosenCategory,  cookTimeTextInput,imageUrl, DataStorage.ingredients?.toString(), descriptionTextInput?.text.toString() )
+        val recipe = Recipe(titleTextInput?.text.toString(), choosenCategory,  cookTimeTextInput?.text.toString() ,imageUrl, DataStorage.ingredients?.toString(), descriptionTextInput?.text.toString() )
 
         db.collection("recipes").add(recipe)
     }

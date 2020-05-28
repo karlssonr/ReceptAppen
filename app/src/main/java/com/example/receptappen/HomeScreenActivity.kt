@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
@@ -19,6 +20,10 @@ import kotlinx.android.synthetic.main.activity_home_screen_recycle.*
 class HomeScreenActivity : AppCompatActivity() {
 
     val db = FirebaseFirestore.getInstance()
+    lateinit var randomRecipeImage : ImageView
+    lateinit var randomRecipeTitle : TextView
+    lateinit var randomRecipeCategory : TextView
+    lateinit var randomRecipeCookTime : TextView
 
     private val onNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
 
@@ -56,7 +61,10 @@ class HomeScreenActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_screen_recycle)
 
-        val randomRecipeImage = findViewById<ImageView>(R.id.imageView_random_recipe)
+        randomRecipeImage = findViewById<ImageView>(R.id.imageView_random_recipe)
+        randomRecipeCategory = findViewById(R.id.textView_random_recipe_catagory)
+        randomRecipeCookTime = findViewById(R.id.textView_random_recipe_time_to_cook)
+        randomRecipeTitle = findViewById(R.id.textView_random_recipe_title)
 
 
 
@@ -70,14 +78,21 @@ class HomeScreenActivity : AppCompatActivity() {
                     recipeList.add(newRecipe!!)
                 println("!!! : ${newRecipe}")
             }
-        }
 
-        for (recipe in recipeList) {
-            if (recipe.title == "test") {
+            for (recipe in recipeList) {
+                if (recipe.title == "test1") {
+                   // randomRecipeImage = recipe.image
+                    randomRecipeTitle.text = recipe.title
+                    randomRecipeCookTime.text = recipe.cookTime
+                    randomRecipeCategory.text = recipe.category
+
+                }
 
             }
 
+
         }
+
 
 
 
