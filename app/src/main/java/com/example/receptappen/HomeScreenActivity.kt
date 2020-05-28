@@ -2,18 +2,14 @@ package com.example.receptappen
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.OrientationHelper
-import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.QuerySnapshot
 import kotlinx.android.synthetic.main.activity_home_screen_recycle.*
 
 
@@ -117,8 +113,8 @@ class HomeScreenActivity : AppCompatActivity() {
         recyclerView_food_category.layoutManager = LinearLayoutManager(this, OrientationHelper.HORIZONTAL, false)
         recyclerView_food_category.adapter = AdapterFoodCategory()
 
-        recyclerView_category_and_recipe.layoutManager = LinearLayoutManager(this, OrientationHelper.HORIZONTAL, false)
-        recyclerView_category_and_recipe.adapter = AdapterPopularRow()
+        recyclerView_popular_row.layoutManager = LinearLayoutManager(this, OrientationHelper.HORIZONTAL, false)
+        recyclerView_popular_row.adapter = AdapterPopularRow()
 
         bottomNavigation.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
         /*replaceFragment(HomeFragment())*/
