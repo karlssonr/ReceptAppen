@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.OrientationHelper
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.android.synthetic.main.activity_home_screen_recycle.*
+import kotlinx.android.synthetic.main.fragment_home.*
 
 
 class HomeScreenActivity : AppCompatActivity() {
@@ -25,24 +26,18 @@ class HomeScreenActivity : AppCompatActivity() {
 
         when(item.itemId) {
             R.id.nav_bar_home -> {
-                val intent = Intent(this, HomeScreenActivity::class.java)
-                startActivity(intent)
-               /* replaceFragment(HomeFragment())*/
+                replaceFragment(HomeFragment())
                 return@OnNavigationItemSelectedListener true
             }
             R.id.nav_bar_profile -> {
-                val intent = Intent(this, HomeScreenActivity::class.java)
-                startActivity(intent)
+                replaceFragment(ProfileFragment())
                 return@OnNavigationItemSelectedListener true
             }
             R.id.nav_bar_add -> {
-                val intent = Intent(this, ActivityCreateRecipe::class.java)
-                startActivity(intent)
+                replaceFragment(AddFragment())
                 return@OnNavigationItemSelectedListener true
             }
             R.id.nav_bar_favorite -> {
-                val intent = Intent(this, HomeScreenActivity::class.java)
-                startActivity(intent)
                 replaceFragment(FavoriteFragment())
                 return@OnNavigationItemSelectedListener true
             }
@@ -57,6 +52,8 @@ class HomeScreenActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home_screen_recycle)
 
+
+/*
         randomRecipeImage = findViewById<ImageView>(R.id.imageView_random_recipe)
         randomRecipeCategory = findViewById(R.id.textView_random_recipe_catagory)
         randomRecipeCookTime = findViewById(R.id.textView_random_recipe_time_to_cook)
@@ -95,35 +92,21 @@ class HomeScreenActivity : AppCompatActivity() {
 
 
 
-/*        db.collection("users")
-            .get()
-            .addOnCompleteListener(OnCompleteListener<QuerySnapshot> { task ->
-                if (task.isSuccessful) {
-                    for (document in task.result!!) {
-                        Log.d(
-                            FragmentActivity.TAG,
-                            document.id + " => " + document.data
-                        )
-                    }
-                } else {
-                    Log.w(FragmentActivity.TAG, "Error getting documents.", task.exception)
-                }
-            })*/
 
         recyclerView_food_category.layoutManager = LinearLayoutManager(this, OrientationHelper.HORIZONTAL, false)
         recyclerView_food_category.adapter = AdapterFoodCategory()
 
         recyclerView_popular_row.layoutManager = LinearLayoutManager(this, OrientationHelper.HORIZONTAL, false)
-        recyclerView_popular_row.adapter = AdapterPopularRow()
+        recyclerView_popular_row.adapter = AdapterPopularRow()*/
 
         bottomNavigation.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
-        /*replaceFragment(HomeFragment())*/
+        replaceFragment(HomeFragment())
 
     }
 
     private fun replaceFragment(fragment: Fragment) {
         val fragmentTransaction = supportFragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.fragmentContainer, fragment)
+        fragmentTransaction.replace(R.id.fragment_container, fragment)
         fragmentTransaction.commit()
 
     }
