@@ -57,7 +57,7 @@ class AddFragment : Fragment() {
     lateinit var ingredientsToRecipe: MutableList<String>
     lateinit var choosenCategory: String
     lateinit var cookTimeTextInput: EditText
-    /*lateinit var spinnerCategory : */
+    lateinit var spinnerCategory : Spinner
 
     lateinit var ingredientsRecyclerView: RecyclerView
 
@@ -83,16 +83,16 @@ class AddFragment : Fragment() {
         ingredientTextInput = view.findViewById(R.id.text_input_ingredient)
         titleTextInput = view.findViewById(R.id.text_input_title)
         descriptionTextInput = view.findViewById(R.id.text_input_description)
+        spinnerCategory = view.findViewById(R.id.spinner_category)
 
         val addIngrediensButton = view.findViewById<Button>(R.id.button_add_ingrediens)
         val categoryList = arrayOf("VEG", "KÖTT", "FÅGEL", "FISK", "DESSERT")
 
-        val spinnerAdapter =
-            ArrayAdapter(activity, R.layout.support_simple_spinner_dropdown_item, categoryList)
+        val spinnerAdapter = ArrayAdapter(activity, R.layout.support_simple_spinner_dropdown_item, categoryList)
 
-        spinner_category?.adapter = spinnerAdapter
+        spinnerCategory.adapter = spinnerAdapter
 
-        spinner_category?.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+        spinnerCategory.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(parent: AdapterView<*>?) {
                 TODO("Not yet implemented")
             }
