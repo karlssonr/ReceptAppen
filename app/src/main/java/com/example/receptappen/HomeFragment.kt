@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.OrientationHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.FirebaseFirestore
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_home.*
 
 
@@ -40,20 +41,24 @@ class HomeFragment : Fragment() {
         randomRecipeCookTime = view.findViewById(R.id.textView_random_recipe_time_to_cook)
         randomRecipeTitle = view.findViewById(R.id.textView_random_recipe_title)
 
-        val recipeList = mutableListOf<Recipe>()
         val recipeRef = db.collection("recipes")
 
         recipeRef.get().addOnSuccessListener { documentSnapshot ->
             for (document in documentSnapshot.documents) {
                 val newRecipe = document.toObject(Recipe::class.java)
                 if (newRecipe != null)
-                    recipeList.add(newRecipe!!)
+                    DataStorage.listOfRecipes.add(newRecipe!!)
                 println("!!! : ${newRecipe}")
             }
 
-            for (recipe in recipeList) {
+            for (recipe in DataStorage.listOfRecipes) {
                 if (recipe.title == "test1") {
-                    // randomRecipeImage = recipe.image
+
+                    Picasso.with(activity).load(recipe.image).into(randomRecipeImage)
+
+                    /*Picasso..load(recipe.image.).into(randomRecipeImage)*/
+
+                    /*Picasso.get().load(recipe.image).into(randomRecipeImage)*/
                     randomRecipeTitle.text = recipe.title
                     randomRecipeCookTime.text = recipe.cookTime
                     randomRecipeCategory.text = recipe.category

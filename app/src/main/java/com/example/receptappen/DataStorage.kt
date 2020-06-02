@@ -1,9 +1,17 @@
 package com.example.receptappen
 
+import com.google.firebase.firestore.FirebaseFirestore
+import com.squareup.picasso.Picasso
+
 object DataStorage {
 
 
+
+
     val ingredients = mutableListOf<String>()
+    val listOfRecipes  = mutableListOf<Recipe>()
+
+
 
 
 /*
