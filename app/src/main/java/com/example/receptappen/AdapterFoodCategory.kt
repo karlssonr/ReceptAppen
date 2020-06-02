@@ -23,7 +23,41 @@ class AdapterFoodCategory: RecyclerView.Adapter<CustomViewHolderCategory>() {
     }
 
     override fun onBindViewHolder(holder: CustomViewHolderCategory, position: Int) {
-        holder?.view?.textView_category.text = "VEG"
+
+        val imageViewCategory = holder.view.image_category
+        val textViewCategory = holder.view.textView_category
+      /*  holder?.view?.textView_category.text = "VEG"*/
+
+        if (position == 0) {
+            imageViewCategory.setImageResource(R.drawable.meat)
+            textViewCategory.text = foodCategories[0]
+
+        }
+
+        if (position == 1) {
+            imageViewCategory.setImageResource(R.drawable.vegetable)
+            textViewCategory.text = foodCategories[1]
+            textViewCategory.setBackgroundResource(R.drawable.round_corner_veg)
+
+        }
+
+        if (position == 2) {
+            imageViewCategory.setImageResource(R.drawable.chicken)
+            textViewCategory.text = foodCategories[2]
+
+        }
+
+        if (position == 3) {
+            imageViewCategory.setImageResource(R.drawable.fish)
+            textViewCategory.text = foodCategories[3]
+
+        }
+
+        if (position == 4) {
+            imageViewCategory.setImageResource(R.drawable.cake)
+            textViewCategory.text = foodCategories[4]
+
+        }
 
 
 
@@ -34,5 +68,7 @@ class AdapterFoodCategory: RecyclerView.Adapter<CustomViewHolderCategory>() {
 }
 
 class CustomViewHolderCategory(val view: View): RecyclerView.ViewHolder(view) {
+
+    var foodCategotyPosition = 0
 
 }

@@ -147,7 +147,36 @@ class AddFragment : Fragment() {
         }
 
         saveRecipeButton.setOnClickListener {
-            uploadImage()
+
+            if( titleTextInput.text.toString() == "" ) {
+                Toast.makeText(activity, "Ange titel", Toast.LENGTH_SHORT).show()
+
+            }
+
+            if( ingredientTextInput.text.toString() == "" ) {
+                Toast.makeText(activity, "Ange ingrediens", Toast.LENGTH_SHORT).show()
+
+            }
+
+            if( descriptionTextInput.text.toString() == "" ) {
+                Toast.makeText(activity, "Ange beskrivning", Toast.LENGTH_SHORT).show()
+
+            }
+
+            if( cookTimeTextInput.text.toString() == "" ) {
+                Toast.makeText(activity, "Ange tid", Toast.LENGTH_SHORT).show()
+
+            }
+
+
+            else {
+
+                uploadImage()
+                println("!!!! :  ${titleTextInput.text}")
+
+            }
+
+
 
 
         }

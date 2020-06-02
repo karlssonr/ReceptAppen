@@ -17,6 +17,7 @@ class AdapterMyRecipe(private val context: Context, private val listOfRecipes: L
 
 
 
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
         val itemView = layoutInflator.inflate(R.layout.profile_my_recipe_recyclerview, parent, false)
@@ -30,7 +31,6 @@ class AdapterMyRecipe(private val context: Context, private val listOfRecipes: L
         TODO("Not yet implemented")
     }
 
-}
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
 
@@ -43,3 +43,5 @@ class AdapterMyRecipe(private val context: Context, private val listOfRecipes: L
 
     }
 }
+
+
