@@ -11,6 +11,14 @@ object DataStorage {
     val ingredients = mutableListOf<String>()
     val listOfRecipes  = mutableListOf<Recipe>()
 
+    val vegitarianRecipes = mutableListOf<Recipe>()
+    val meatRecipes = mutableListOf<Recipe>()
+    val chickenRecipes = mutableListOf<Recipe>()
+    val fishRecipes = mutableListOf<Recipe>()
+    val dessertRecipes = mutableListOf<Recipe>()
+
+
+
 
 
 

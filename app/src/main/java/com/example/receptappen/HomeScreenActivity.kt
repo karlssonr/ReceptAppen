@@ -97,7 +97,7 @@ class HomeScreenActivity : AppCompatActivity() {
         recyclerView_food_category.adapter = AdapterFoodCategory()
 
         recyclerView_popular_row.layoutManager = LinearLayoutManager(this, OrientationHelper.HORIZONTAL, false)
-        recyclerView_popular_row.adapter = AdapterPopularRow()*/
+        recyclerView_popular_row.adapter = AdapterVegRow()*/
 
         bottomNavigation.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
         replaceFragment(HomeFragment())

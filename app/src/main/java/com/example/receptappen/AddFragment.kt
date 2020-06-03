@@ -112,6 +112,7 @@ class AddFragment : Fragment() {
 
             addNewIngredient()
             ingredientsRecyclerView.adapter?.notifyDataSetChanged()
+            ingredientTextInput.text.clear()
 
 
         }
@@ -119,8 +120,7 @@ class AddFragment : Fragment() {
         val saveRecipeButton = view.findViewById<Button>(R.id.save_recipe_button) as Button
         ingredientsRecyclerView = view.findViewById<RecyclerView>(R.id.recyclerView_ingredients)
 
-        ingredientsRecyclerView.layoutManager = LinearLayoutManager(activity)
-        ingredientsRecyclerView.adapter = AdapterAddIngrediens(activity, DataStorage.ingredients)
+
 
         imagePreview = view.findViewById<ImageView>(R.id.add_photo_image) as ImageView
 
@@ -150,21 +150,25 @@ class AddFragment : Fragment() {
 
             if( titleTextInput.text.toString() == "" ) {
                 Toast.makeText(activity, "Ange titel", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
 
             }
 
             if( ingredientTextInput.text.toString() == "" ) {
                 Toast.makeText(activity, "Ange ingrediens", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
 
             }
 
             if( descriptionTextInput.text.toString() == "" ) {
                 Toast.makeText(activity, "Ange beskrivning", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
 
             }
 
             if( cookTimeTextInput.text.toString() == "" ) {
                 Toast.makeText(activity, "Ange tid", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
 
             }
 
@@ -180,6 +184,9 @@ class AddFragment : Fragment() {
 
 
         }
+
+        ingredientsRecyclerView.layoutManager = LinearLayoutManager(activity)
+        ingredientsRecyclerView.adapter = AdapterAddIngrediens(activity, DataStorage.ingredients)
 
         return view
     }
@@ -250,16 +257,19 @@ class AddFragment : Fragment() {
             val ref = storageReference?.child("uploads/" + UUID.randomUUID().toString())
             ref?.putFile(filePath!!)
                 ?.addOnSuccessListener(OnSuccessListener<UploadTask.TaskSnapshot> {
-                    imageUrl = ref.downloadUrl.toString()
-                    uploadRecipe()
+                     ref.downloadUrl.addOnSuccessListener {
+                        imageUrl = it.toString()
+                         uploadRecipe()
+                    }
 
-                    Toast.makeText(activity, "Image Uploaded", Toast.LENGTH_SHORT).show()
+
+                    Toast.makeText(activity, "Recept sparat", Toast.LENGTH_SHORT).show()
                 })?.addOnFailureListener(OnFailureListener { e ->
                 Toast.makeText(activity, "Image Uploading Failed " + e.message, Toast.LENGTH_SHORT)
                     .show()
             })
         } else {
-            Toast.makeText(activity, "Please Select an Image", Toast.LENGTH_SHORT).show()
+            Toast.makeText(activity, "Välj en bild", Toast.LENGTH_SHORT).show()
         }
     }
 

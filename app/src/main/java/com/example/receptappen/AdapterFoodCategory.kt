@@ -31,6 +31,7 @@ class AdapterFoodCategory: RecyclerView.Adapter<CustomViewHolderCategory>() {
         if (position == 0) {
             imageViewCategory.setImageResource(R.drawable.meat)
             textViewCategory.text = foodCategories[0]
+            textViewCategory.setBackgroundResource(R.drawable.round_corner_meat)
 
         }
 
@@ -44,18 +45,21 @@ class AdapterFoodCategory: RecyclerView.Adapter<CustomViewHolderCategory>() {
         if (position == 2) {
             imageViewCategory.setImageResource(R.drawable.chicken)
             textViewCategory.text = foodCategories[2]
+            textViewCategory.setBackgroundResource(R.drawable.round_corner_chicken)
 
         }
 
         if (position == 3) {
             imageViewCategory.setImageResource(R.drawable.fish)
             textViewCategory.text = foodCategories[3]
+            textViewCategory.setBackgroundResource(R.drawable.round_corner_fish)
 
         }
 
         if (position == 4) {
             imageViewCategory.setImageResource(R.drawable.cake)
             textViewCategory.text = foodCategories[4]
+            textViewCategory.setBackgroundResource(R.drawable.round_corner_dessert)
 
         }
 
