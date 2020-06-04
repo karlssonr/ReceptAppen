@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.OrientationHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.FirebaseFirestore
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.fragment_home.*
 
 
 class HomeFragment : Fragment() {
@@ -24,8 +25,13 @@ class HomeFragment : Fragment() {
     lateinit var randomRecipeCategory : TextView
     lateinit var randomRecipeCookTime : TextView
 
-    val vegRecipeRef = db.collection("recipes").whereEqualTo("category", "VEG")
+
     val recipeRef = db.collection("recipes")
+    val vegRecipeRef = db.collection("recipes").whereEqualTo("category", "VEG")
+    val meatRecipeRef = db.collection("recipes").whereEqualTo("category", "KÖTT")
+    val dessertRecipeRef = db.collection("recipes").whereEqualTo("category", "DESSERT")
+    val fishRecipeRef = db.collection("recipes").whereEqualTo("category", "FISK")
+    val chickenRecipeRef = db.collection("recipes").whereEqualTo("category", "FÅGEL")
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -40,6 +46,8 @@ class HomeFragment : Fragment() {
 
         val foodCategoryRecyclerview = view.findViewById<RecyclerView>(R.id.recyclerView_food_category)
         val popularRowRecyclerview = view.findViewById<RecyclerView>(R.id.recyclerView_veg)
+        val meatRecyclerview = view.findViewById<RecyclerView>(R.id.recyclerView_meat)
+        val chickenRecyclerView = view.findViewById<RecyclerView>(R.id.recyclerView_chicken)
 
         randomRecipeImage = view.findViewById<ImageView>(R.id.imageView_random_recipe)
         randomRecipeCategory = view.findViewById(R.id.textView_random_recipe_catagory)
@@ -54,32 +62,79 @@ class HomeFragment : Fragment() {
                 val newRecipe = document.toObject(Recipe::class.java)
                 if (newRecipe != null)
                     DataStorage.listOfRecipes.add(newRecipe!!)
-                println("!!! : ${newRecipe}")
+
             }
 
         }
+
+
 
         vegRecipeRef.get().addOnSuccessListener { documentSnapshot ->
             for (document in documentSnapshot.documents) {
                 val newRecipe = document.toObject(Recipe::class.java)
                 if (newRecipe != null)
                     DataStorage.vegitarianRecipes.add(newRecipe!!)
-                println("!!! : ${newRecipe}")
+
             }
 
+        }
 
+        meatRecipeRef.get().addOnSuccessListener { documentSnapshot ->
+            for (document in documentSnapshot.documents) {
+                val newRecipe = document.toObject(Recipe::class.java)
+                if (newRecipe != null)
+                    DataStorage.meatRecipes.add(newRecipe!!)
 
-            loadRecipeIntoRandomRecipeLayout()
+            }
+
+        }
+
+        dessertRecipeRef.get().addOnSuccessListener { documentSnapshot ->
+            for (document in documentSnapshot.documents) {
+                val newRecipe = document.toObject(Recipe::class.java)
+                if (newRecipe != null)
+                    DataStorage.dessertRecipes.add(newRecipe!!)
+
+            }
+
+        }
+
+        chickenRecipeRef.get().addOnSuccessListener { documentSnapshot ->
+            for (document in documentSnapshot.documents) {
+                val newRecipe = document.toObject(Recipe::class.java)
+                if (newRecipe != null)
+                    DataStorage.chickenRecipes.add(newRecipe!!)
+
+            }
+
+        }
+
+        fishRecipeRef.get().addOnSuccessListener { documentSnapshot ->
+            for (document in documentSnapshot.documents) {
+                val newRecipe = document.toObject(Recipe::class.java)
+                if (newRecipe != null)
+                    DataStorage.fishRecipes.add(newRecipe!!)
+
+            }
 
         }
 
 
+
+
+
+
+        loadRecipeIntoRandomRecipeLayout()
 
         foodCategoryRecyclerview.layoutManager = LinearLayoutManager(activity, OrientationHelper.HORIZONTAL, false)
         foodCategoryRecyclerview.adapter = AdapterFoodCategory()
 
         popularRowRecyclerview.layoutManager = LinearLayoutManager(activity, OrientationHelper.HORIZONTAL, false)
         popularRowRecyclerview.adapter = AdapterVegRow(activity, DataStorage.vegitarianRecipes)
+
+        chickenRecyclerView.layoutManager = LinearLayoutManager(activity, OrientationHelper.HORIZONTAL, false)
+        chickenRecyclerView.adapter = AdapterChickenRow(activity, DataStorage.chickenRecipes)
+        
 
         return view
     }

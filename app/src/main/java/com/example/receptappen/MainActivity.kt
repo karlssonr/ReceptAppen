@@ -19,6 +19,9 @@ class MainActivity : AppCompatActivity() {
 
 
 
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -27,20 +30,14 @@ class MainActivity : AppCompatActivity() {
 
 
 
-/*                val recipe = Recipe("Tomat Soppa", "VEG", "20min","@drawable/tomatsoppa", "Smör, Gul lök, Tomater/Krossade tomater Vatten Vispgrädde/Mjölk, Svartpeppar",
-            "Hacka den gula löken fint. Hetta upp smöret\n" +
-                    "i en kastrul," +
-                    "" )
-
-        db.collection("recipes").add(recipe)*/
-
-
 
 
 
         logInButton.setOnClickListener(View.OnClickListener {
                 view -> login() })
     }
+
+
 
 
     private fun login() {

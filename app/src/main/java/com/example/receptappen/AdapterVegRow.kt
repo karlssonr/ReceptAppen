@@ -31,6 +31,8 @@ class AdapterVegRow(private val context: Context, private val vegitarianRecipes:
 
     override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
 
+
+
         val recipe = vegitarianRecipes[position]
 
         Picasso.with(context).load(recipe.image).into(holder.vegRecipeImage)
@@ -45,12 +47,12 @@ class AdapterVegRow(private val context: Context, private val vegitarianRecipes:
 
 
 
-    class CustomViewHolder(val view: View): RecyclerView.ViewHolder(view) {
+   inner class CustomViewHolder(val view: View): RecyclerView.ViewHolder(view) {
 
         var vegRecipeImage = view.findViewById<ImageView>(R.id.imageView_veg_row)
         var vegRecipeTitle = view.findViewById<TextView>(R.id.textView_veg_row_title)
         var vegRecipeCategory = view.findViewById<TextView>(R.id.textView_veg_row_category)
-        var vegRecipeTime = view.findViewById<TextView>(R.id.textView_meat_row_time)
+        var vegRecipeTime = view.findViewById<TextView>(R.id.textView_veg_row_time)
 
     }
 

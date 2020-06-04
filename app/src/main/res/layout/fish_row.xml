@@ -26,7 +26,7 @@
                 android:text="TextView"
                 android:textColor="@android:color/white"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView_veg_row_title" />
+                app:layout_constraintTop_toBottomOf="@+id/textView_fish_row_title" />
 
             <TextView
                 android:id="@+id/textView_fish_row_category"
@@ -39,8 +39,8 @@
                 android:paddingVertical="0dp"
                 android:text="TextView"
                 android:textColor="@android:color/white"
-                app:layout_constraintEnd_toStartOf="@+id/textView_meat_row_time"
-                app:layout_constraintTop_toBottomOf="@+id/textView_veg_row_title" />
+                app:layout_constraintEnd_toStartOf="@+id/textView_fish_row_time"
+                app:layout_constraintTop_toBottomOf="@+id/textView_fish_row_title" />
 
             <TextView
                 android:id="@+id/textView_fish_row_title"
@@ -52,7 +52,7 @@
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView_veg_row" />
+                app:layout_constraintTop_toBottomOf="@+id/imageView_fish_row" />
 
             <ImageView
                 android:id="@+id/imageView_fish_row"
