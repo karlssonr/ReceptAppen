@@ -1,11 +1,13 @@
 package com.example.receptappen
 
 import com.google.firebase.firestore.FirebaseFirestore
+import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 
 object DataStorage {
 
 
+    val db = FirebaseFirestore.getInstance()
 
 
     val ingredients = mutableListOf<String>()
@@ -20,23 +22,21 @@ object DataStorage {
 
 
 
-
-
-/*
     init {
-        createMockData()
+
+
+
+        }
+
+        fun downloadMeatRecipes(callback: () -> Unit ) {
+
+
+                callback.invoke()
+        }
     }
 
 
-    fun createMockData() {
-
-        var ingredient = Ingredient("Morot", "2st")
-        ingredients.add(ingredient)
-
-        ingredient = Ingredient("Mjölk", "2dl")
-        ingredients.add(ingredient)
-    }
-*/
 
 
-}
+
+

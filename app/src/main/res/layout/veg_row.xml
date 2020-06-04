@@ -25,6 +25,7 @@
                 android:paddingVertical="0dp"
                 android:text="TextView"
                 android:textColor="@android:color/white"
+                android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView_veg_row_title" />
 
@@ -39,6 +40,7 @@
                 android:paddingVertical="0dp"
                 android:text="TextView"
                 android:textColor="@android:color/white"
+                android:textSize="12sp"
                 app:layout_constraintEnd_toStartOf="@+id/textView_veg_row_time"
                 app:layout_constraintTop_toBottomOf="@+id/textView_veg_row_title" />
 
@@ -48,7 +50,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="Josefin Sans"
                 android:text="TextView"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

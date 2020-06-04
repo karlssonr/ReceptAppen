@@ -9,12 +9,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.OrientationHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.FirebaseFirestore
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.fragment_home.*
 
 
 class HomeFragment : Fragment() {
@@ -28,7 +28,7 @@ class HomeFragment : Fragment() {
 
     val recipeRef = db.collection("recipes")
     val vegRecipeRef = db.collection("recipes").whereEqualTo("category", "VEG")
-    val meatRecipeRef = db.collection("recipes").whereEqualTo("category", "KÖTT")
+    val meatRecipeRef = DataStorage.db.collection("recipes").whereEqualTo("category", "KÖTT")
     val dessertRecipeRef = db.collection("recipes").whereEqualTo("category", "DESSERT")
     val fishRecipeRef = db.collection("recipes").whereEqualTo("category", "FISK")
     val chickenRecipeRef = db.collection("recipes").whereEqualTo("category", "FÅGEL")
@@ -45,14 +45,20 @@ class HomeFragment : Fragment() {
         val activity = activity as Context
 
         val foodCategoryRecyclerview = view.findViewById<RecyclerView>(R.id.recyclerView_food_category)
-        val popularRowRecyclerview = view.findViewById<RecyclerView>(R.id.recyclerView_veg)
+        val vegRowRecyclerview = view.findViewById<RecyclerView>(R.id.recyclerView_veg)
         val meatRecyclerview = view.findViewById<RecyclerView>(R.id.recyclerView_meat)
         val chickenRecyclerView = view.findViewById<RecyclerView>(R.id.recyclerView_chicken)
+        val fishRecyclerview = view.findViewById<RecyclerView>(R.id.recyclerView_fish)
+        val dessertRecyclerview = view.findViewById<RecyclerView>(R.id.recyclerView_dessert)
+        val allRecipeRecyclerview = view.findViewById<RecyclerView>(R.id.recyclerView_all_recipe)
+
+
 
         randomRecipeImage = view.findViewById<ImageView>(R.id.imageView_random_recipe)
         randomRecipeCategory = view.findViewById(R.id.textView_random_recipe_catagory)
         randomRecipeCookTime = view.findViewById(R.id.textView_random_recipe_time_to_cook)
         randomRecipeTitle = view.findViewById(R.id.textView_random_recipe_title)
+
 
 
 
@@ -79,15 +85,7 @@ class HomeFragment : Fragment() {
 
         }
 
-        meatRecipeRef.get().addOnSuccessListener { documentSnapshot ->
-            for (document in documentSnapshot.documents) {
-                val newRecipe = document.toObject(Recipe::class.java)
-                if (newRecipe != null)
-                    DataStorage.meatRecipes.add(newRecipe!!)
 
-            }
-
-        }
 
         dessertRecipeRef.get().addOnSuccessListener { documentSnapshot ->
             for (document in documentSnapshot.documents) {
@@ -119,6 +117,16 @@ class HomeFragment : Fragment() {
 
         }
 
+        meatRecipeRef.get().addOnSuccessListener { documentSnapshot ->
+            for (document in documentSnapshot.documents) {
+                val newRecipe = document.toObject(Recipe::class.java)
+                if (newRecipe != null)
+                    DataStorage.meatRecipes.add(newRecipe!!)
+
+            }
+
+        }
+
 
 
 
@@ -129,12 +137,29 @@ class HomeFragment : Fragment() {
         foodCategoryRecyclerview.layoutManager = LinearLayoutManager(activity, OrientationHelper.HORIZONTAL, false)
         foodCategoryRecyclerview.adapter = AdapterFoodCategory()
 
-        popularRowRecyclerview.layoutManager = LinearLayoutManager(activity, OrientationHelper.HORIZONTAL, false)
-        popularRowRecyclerview.adapter = AdapterVegRow(activity, DataStorage.vegitarianRecipes)
+        vegRowRecyclerview.layoutManager = LinearLayoutManager(activity, OrientationHelper.HORIZONTAL, false)
+        vegRowRecyclerview.adapter = AdapterVegRow(activity, DataStorage.vegitarianRecipes)
 
         chickenRecyclerView.layoutManager = LinearLayoutManager(activity, OrientationHelper.HORIZONTAL, false)
         chickenRecyclerView.adapter = AdapterChickenRow(activity, DataStorage.chickenRecipes)
-        
+
+        fishRecyclerview.layoutManager = LinearLayoutManager(activity, OrientationHelper.HORIZONTAL, false)
+        fishRecyclerview.adapter = AdapterFishRow(activity, DataStorage.fishRecipes)
+
+
+            meatRecyclerview.layoutManager = LinearLayoutManager(activity, OrientationHelper.HORIZONTAL, false)
+            meatRecyclerview.adapter = AdapterMeatRow(activity, DataStorage.meatRecipes)
+
+        dessertRecyclerview.layoutManager = LinearLayoutManager(activity, OrientationHelper.HORIZONTAL, false)
+        dessertRecyclerview.adapter = AdapterDessertRow(activity, DataStorage.dessertRecipes)
+
+        allRecipeRecyclerview.layoutManager = LinearLayoutManager(activity, OrientationHelper.HORIZONTAL, false)
+        allRecipeRecyclerview.adapter = AdapterAllRecipeRow(activity, DataStorage.listOfRecipes)
+
+
+
+
+
 
         return view
     }
@@ -163,6 +188,17 @@ class HomeFragment : Fragment() {
 
 
     }
+
+/*    private fun replaceFragment(fragment: Fragment) {
+        val fragmentTransaction = supportFragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.fragment_container, fragment)
+        fragmentTransaction.commit()
+
+
+
+    }*/
+
+
 
 
     private fun loadRecipeIntoRandomRecipeLayout() {

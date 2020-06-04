@@ -156,7 +156,7 @@
                     android:text="Visa alla"
                     android:textSize="14dp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/recyclerView_food_category" />
+                    app:layout_constraintTop_toBottomOf="@+id/recyclerView_all_recipe" />
 
                 <TextView
                     android:id="@+id/textView_popular"
@@ -168,7 +168,7 @@
                     android:text="Vegetariskt"
                     android:textSize="20dp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/recyclerView_food_category" />
+                    app:layout_constraintTop_toBottomOf="@+id/recyclerView_all_recipe" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyclerView_veg"
@@ -320,6 +320,41 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView18" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerView_all_recipe"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/textView_all_recipe_headline" />
+
+                <TextView
+                    android:id="@+id/textView_visa_alla_all_recipe"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginEnd="16dp"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="Visa alla"
+                    android:textSize="14dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/recyclerView_food_category" />
+
+                <TextView
+                    android:id="@+id/textView_all_recipe_headline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:fontFamily="@font/roboto_medium"
+                    android:text="Alla recept"
+                    android:textSize="20dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/recyclerView_food_category" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
