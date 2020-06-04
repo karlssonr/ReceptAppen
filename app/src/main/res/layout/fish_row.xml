@@ -15,7 +15,7 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/textView_veg_row_time"
+                android:id="@+id/textView_fish_row_time"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="2dp"
@@ -29,7 +29,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView_veg_row_title" />
 
             <TextView
-                android:id="@+id/textView_veg_row_category"
+                android:id="@+id/textView_fish_row_category"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="2dp"
@@ -43,7 +43,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView_veg_row_title" />
 
             <TextView
-                android:id="@+id/textView_veg_row_title"
+                android:id="@+id/textView_fish_row_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="Josefin Sans"
@@ -55,7 +55,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/imageView_veg_row" />
 
             <ImageView
-                android:id="@+id/imageView_veg_row"
+                android:id="@+id/imageView_fish_row"
                 android:layout_width="200dp"
                 android:layout_height="140dp"
                 app:layout_constraintBottom_toBottomOf="parent"
