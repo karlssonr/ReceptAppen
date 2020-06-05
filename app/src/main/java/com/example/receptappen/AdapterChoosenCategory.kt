@@ -41,10 +41,10 @@ class AdapterChoosenCategory(private val context: Context,
     override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
 
 
-        val meatCategory = choosenCategoryFragment.arguments?.getString("meat")
+  /*      val meatCategory = choosenCategoryFragment.arguments?.getString("meat")
 
         println(meatCategory)
-
+*/
 
 
 

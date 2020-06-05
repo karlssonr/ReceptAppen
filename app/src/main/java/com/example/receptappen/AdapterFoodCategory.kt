@@ -74,10 +74,43 @@ class AdapterFoodCategory(private val context : Context, private val homeFragmen
         holder.cardviewCategory.setOnClickListener {
 
             if (position == 0) {
-                holder.bundle.putString("meatCategory" , "KÖTT" )
-                homeFragment.arguments = holder.bundle
-                homeFragment.activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.fragment_container, ChoosenCategoryFragment.newInstance())?.commit()
-               // homeFragment.activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.fragment_container, ChoosenRecipeFragment.newInstance())?.commit()
+                holder.bundle.putString("category" , foodCategories[0] )
+
+                holder.choosenCategoryFragment.arguments = holder.bundle
+                homeFragment.activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.fragment_container, holder.choosenCategoryFragment)?.commit()
+
+            }
+
+            if (position == 1) {
+                holder.bundle.putString("category" , foodCategories[1] )
+
+                holder.choosenCategoryFragment.arguments = holder.bundle
+                homeFragment.activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.fragment_container, holder.choosenCategoryFragment)?.commit()
+
+            }
+
+            if (position == 2) {
+                holder.bundle.putString("category" , foodCategories[2] )
+
+                holder.choosenCategoryFragment.arguments = holder.bundle
+                homeFragment.activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.fragment_container, holder.choosenCategoryFragment)?.commit()
+
+            }
+
+            if (position == 3) {
+                holder.bundle.putString("category" , foodCategories[3] )
+
+                holder.choosenCategoryFragment.arguments = holder.bundle
+                homeFragment.activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.fragment_container, holder.choosenCategoryFragment)?.commit()
+
+            }
+
+            if (position == 4) {
+                holder.bundle.putString("category" , foodCategories[4] )
+
+                holder.choosenCategoryFragment.arguments = holder.bundle
+                homeFragment.activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.fragment_container, holder.choosenCategoryFragment)?.commit()
+
             }
 
 
@@ -95,10 +128,9 @@ class AdapterFoodCategory(private val context : Context, private val homeFragmen
         val cardviewCategory = view.findViewById<CardView>(R.id.cardview_food_category_row)
 
        val bundle = Bundle()
-
-     //   val choosenCategoryFragment = ChoosenCategoryFragment(context)
-        val fragmentManager = homeFragment.fragmentManager
-        val fragmentTransaction = fragmentManager?.beginTransaction()
+       val choosenCategoryFragment = ChoosenCategoryFragment()
+       // val fragmentManager = homeFragment.fragmentManager
+        //val fragmentTransaction = fragmentManager?.beginTransaction()
 
         var foodCategotyPosition = 0
 
