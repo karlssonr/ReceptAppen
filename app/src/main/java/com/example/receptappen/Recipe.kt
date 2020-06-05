@@ -5,7 +5,8 @@ data class Recipe(var title: String = "",
              var cookTime: String = "",
              var image: String = "",
              var ingredients: String = "",
-             var description: String = "") {
+             var description: String = "",
+                  var saveFavorite : Boolean = false) {
 
     
 }

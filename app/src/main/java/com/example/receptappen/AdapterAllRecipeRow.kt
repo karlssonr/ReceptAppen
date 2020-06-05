@@ -9,10 +9,13 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
+import androidx.fragment.app.FragmentTransaction
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 
-class AdapterAllRecipeRow(private val context: Context, private val listOfRecipes: List<Recipe>): RecyclerView.Adapter<AdapterAllRecipeRow.CustomViewHolder>() {
+class AdapterAllRecipeRow(private val context: Context, private val listOfRecipes: List<Recipe>, private val homeFragment: HomeFragment): RecyclerView.Adapter<AdapterAllRecipeRow.CustomViewHolder>() {
 
     private val layoutInflator = LayoutInflater.from(context)
 
@@ -67,7 +70,7 @@ class AdapterAllRecipeRow(private val context: Context, private val listOfRecipe
 
         holder.allRecipeCardView.setOnClickListener {
 
-            holder.intent.putExtra("allRecipeImage", recipe.image)
+ /*           holder.intent.putExtra("allRecipeImage", recipe.image)
             holder.intent.putExtra("allRecipeTitle", recipe.title)
             holder.intent.putExtra("allRecipeCategory", recipe.category)
             holder.intent.putExtra("allRecipeCooktime", recipe.cookTime)
@@ -77,12 +80,13 @@ class AdapterAllRecipeRow(private val context: Context, private val listOfRecipe
 
 
 
+            context.startActivity(holder.intent)*/
+            homeFragment.activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.fragment_container, ChoosenRecipeFragment.newInstance())?.commit()
 
-            context.startActivity(holder.intent)
 
 
- /*            if (it != null) {
-                requireActivity().supportFragmentManager.beginTransaction()
+  /*           if (it != null) {
+                activity.supportFragmentManager.beginTransaction()
                     .replace(R.id.fragment_container, ChoosenRecipeFragment.newInstance()).commit()
             }*/
 
@@ -104,7 +108,7 @@ class AdapterAllRecipeRow(private val context: Context, private val listOfRecipe
         var allRecipeCategory = view.findViewById<TextView>(R.id.textView_all_recipe_row_category)
         var allRecipeTime = view.findViewById<TextView>(R.id.textView_all_recipe_row_time)
         val allRecipeCardView = view.findViewById<CardView>(R.id.cardView_all_recipe_row)
-        val intent = Intent(context, ChoosenRecipeActivity::class.java)
+        /*val intent = Intent(context, ChoosenRecipeActivity::class.java)*/
 
 
 

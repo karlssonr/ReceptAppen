@@ -29,7 +29,7 @@ class ChoosenRecipeActivity : AppCompatActivity() {
         val allRecipeCategory = intent.getStringExtra("allRecipeCategory")
         val allRecipeDescription = intent.getStringExtra("allRecipeDescription")
         val allRecipeIngrediens = intent.getStringExtra("allRecipeIngrediens")
-        val allRecipeTime = intent.getStringExtra("allRecipeTime")
+        val allRecipeTime = intent.getStringExtra("allRecipeCooktime")
 
 
         Picasso.with(this).load(allRecipeImage).into(choosenRecipeImage)
@@ -39,7 +39,29 @@ class ChoosenRecipeActivity : AppCompatActivity() {
         choosenRecipeTime.text = allRecipeTime
         choosenRecipeTitle.text = allRecipeTitle
 
+        if (choosenRecipeCategory.text == "KÖTT") {
+            choosenRecipeCategory.setBackgroundResource(R.drawable.round_corner_meat)
+        }
 
+        if (choosenRecipeCategory.text == "VEG") {
+            choosenRecipeCategory.setBackgroundResource(R.drawable.round_corner_veg)
+        }
+
+        if (choosenRecipeCategory.text == "FÅGEL") {
+            choosenRecipeCategory.setBackgroundResource(R.drawable.round_corner_chicken)
+        }
+
+        if (choosenRecipeCategory.text == "FISK") {
+            choosenRecipeCategory.setBackgroundResource(R.drawable.round_corner_fish)
+        }
+
+        if (choosenRecipeCategory.text == "DESSERT") {
+            choosenRecipeCategory.setBackgroundResource(R.drawable.round_corner_dessert)
+        }
+
+
+
+        println("!!!" +allRecipeTime)
 
 
 

@@ -154,7 +154,7 @@ class HomeFragment : Fragment() {
         dessertRecyclerview.adapter = AdapterDessertRow(activity, DataStorage.dessertRecipes)
 
         allRecipeRecyclerview.layoutManager = LinearLayoutManager(activity, OrientationHelper.HORIZONTAL, false)
-        allRecipeRecyclerview.adapter = AdapterAllRecipeRow(activity, DataStorage.listOfRecipes)
+        allRecipeRecyclerview.adapter = AdapterAllRecipeRow(activity, DataStorage.listOfRecipes, this)
 
 
 
