@@ -135,7 +135,7 @@ class HomeFragment : Fragment() {
         loadRecipeIntoRandomRecipeLayout()
 
         foodCategoryRecyclerview.layoutManager = LinearLayoutManager(activity, OrientationHelper.HORIZONTAL, false)
-        foodCategoryRecyclerview.adapter = AdapterFoodCategory()
+        foodCategoryRecyclerview.adapter = AdapterFoodCategory(activity, this)
 
         vegRowRecyclerview.layoutManager = LinearLayoutManager(activity, OrientationHelper.HORIZONTAL, false)
         vegRowRecyclerview.adapter = AdapterVegRow(activity, DataStorage.vegitarianRecipes)

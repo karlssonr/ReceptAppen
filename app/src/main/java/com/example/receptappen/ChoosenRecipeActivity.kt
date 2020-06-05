@@ -61,7 +61,7 @@ class ChoosenRecipeActivity : AppCompatActivity() {
 
 
 
-        println("!!!" +allRecipeTime)
+
 
 
 

@@ -1,13 +1,21 @@
 package com.example.receptappen
 
+import android.content.Context
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.cardview.widget.CardView
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.food_category_row.view.*
 
 
-class AdapterFoodCategory: RecyclerView.Adapter<CustomViewHolderCategory>() {
+class AdapterFoodCategory(private val context : Context, private val homeFragment: HomeFragment): RecyclerView.Adapter<AdapterFoodCategory.CustomViewHolderCategory>() {
+
+    private val layoutInflator = LayoutInflater.from(context)
 
     val foodCategories = listOf<String>("KÖTT","VEG","FÅGEL","FISK","DESSERT")
 
@@ -16,63 +24,85 @@ class AdapterFoodCategory: RecyclerView.Adapter<CustomViewHolderCategory>() {
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomViewHolderCategory {
-        val layoutInflater = LayoutInflater.from(parent?.context)
-        val cellForRow = layoutInflater.inflate(R.layout.food_category_row, parent, false)
-        return CustomViewHolderCategory(cellForRow)
+
+        val itemView = layoutInflator.inflate(R.layout.food_category_row, parent, false)
+        return CustomViewHolderCategory(itemView)
 
     }
 
     override fun onBindViewHolder(holder: CustomViewHolderCategory, position: Int) {
 
-        val imageViewCategory = holder.view.image_category
-        val textViewCategory = holder.view.textView_category
-      /*  holder?.view?.textView_category.text = "VEG"*/
+
+
 
         if (position == 0) {
-            imageViewCategory.setImageResource(R.drawable.meat)
-            textViewCategory.text = foodCategories[0]
-            textViewCategory.setBackgroundResource(R.drawable.round_corner_meat)
+            holder.imageViewCategory.setImageResource(R.drawable.meat)
+            holder.textViewCategory.text = foodCategories[0]
+            holder.textViewCategory.setBackgroundResource(R.drawable.round_corner_meat)
 
         }
 
         if (position == 1) {
-            imageViewCategory.setImageResource(R.drawable.vegetable)
-            textViewCategory.text = foodCategories[1]
-            textViewCategory.setBackgroundResource(R.drawable.round_corner_veg)
+            holder.imageViewCategory.setImageResource(R.drawable.vegetable)
+            holder.textViewCategory.text = foodCategories[1]
+            holder.textViewCategory.setBackgroundResource(R.drawable.round_corner_veg)
 
         }
 
         if (position == 2) {
-            imageViewCategory.setImageResource(R.drawable.chicken)
-            textViewCategory.text = foodCategories[2]
-            textViewCategory.setBackgroundResource(R.drawable.round_corner_chicken)
+            holder.imageViewCategory.setImageResource(R.drawable.chicken)
+            holder.textViewCategory.text = foodCategories[2]
+            holder.textViewCategory.setBackgroundResource(R.drawable.round_corner_chicken)
 
         }
 
         if (position == 3) {
-            imageViewCategory.setImageResource(R.drawable.fish)
-            textViewCategory.text = foodCategories[3]
-            textViewCategory.setBackgroundResource(R.drawable.round_corner_fish)
+            holder.imageViewCategory.setImageResource(R.drawable.fish)
+            holder.textViewCategory.text = foodCategories[3]
+            holder.textViewCategory.setBackgroundResource(R.drawable.round_corner_fish)
 
         }
 
         if (position == 4) {
-            imageViewCategory.setImageResource(R.drawable.cake)
-            textViewCategory.text = foodCategories[4]
-            textViewCategory.setBackgroundResource(R.drawable.round_corner_dessert)
+            holder.imageViewCategory.setImageResource(R.drawable.cake)
+            holder.textViewCategory.text = foodCategories[4]
+            holder.textViewCategory.setBackgroundResource(R.drawable.round_corner_dessert)
 
         }
 
 
+        holder.cardviewCategory.setOnClickListener {
+
+            if (position == 0) {
+                holder.bundle.putString("meatCategory" , "KÖTT" )
+                homeFragment.arguments = holder.bundle
+                homeFragment.activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.fragment_container, ChoosenCategoryFragment.newInstance())?.commit()
+               // homeFragment.activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.fragment_container, ChoosenRecipeFragment.newInstance())?.commit()
+            }
+
+
+
+        }
 
 
     }
 
 
+   inner class CustomViewHolderCategory(val view: View): RecyclerView.ViewHolder(view) {
+
+        val imageViewCategory = view.findViewById<ImageView>(R.id.image_category)
+        val textViewCategory = view.findViewById<TextView>(R.id.textView_category)
+        val cardviewCategory = view.findViewById<CardView>(R.id.cardview_food_category_row)
+
+       val bundle = Bundle()
+
+     //   val choosenCategoryFragment = ChoosenCategoryFragment(context)
+        val fragmentManager = homeFragment.fragmentManager
+        val fragmentTransaction = fragmentManager?.beginTransaction()
+
+        var foodCategotyPosition = 0
+
+    }
+
 }
 
-class CustomViewHolderCategory(val view: View): RecyclerView.ViewHolder(view) {
-
-    var foodCategotyPosition = 0
-
-}

@@ -111,4 +111,9 @@ class HomeScreenActivity : AppCompatActivity() {
 
     }
 
+    interface Communicator {
+
+        fun passDataCom()
+    }
+
 }
