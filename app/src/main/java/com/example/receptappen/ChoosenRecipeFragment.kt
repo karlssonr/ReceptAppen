@@ -6,28 +6,43 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
+import com.squareup.picasso.Picasso
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [ChoosenRecipeFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class ChoosenRecipeFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
+
+
+        val choosenRecipeImage = view?.findViewById<ImageView>(R.id.imageView_choosen_recipe)
+        val choosenRecipeTitle = view?.findViewById<TextView>(R.id.textView_choosen_recipe_title)
+        val choosenRecipeTime = view?.findViewById<TextView>(R.id.textView_choosen_recipe_time)
+        val choosenRecipeCategory = view?.findViewById<TextView>(R.id.textView_choosen_recipe_category)
+        val choosenRecipeIngrediens = view?.findViewById<TextView>(R.id.textView_choosen_recipe_ingrediens)
+        val choosenRecipeDescription = view?.findViewById<TextView>(R.id.textView_choosen_recipe_description)
+
+
+  /*      val allRecipeImage = intent.getStringExtra("allRecipeImage")
+        val allRecipeTitle = intent.getStringExtra("allRecipeTitle")
+        val allRecipeCategory = intent.getStringExtra("allRecipeCategory")
+        val allRecipeDescription = intent.getStringExtra("allRecipeDescription")
+        val allRecipeIngrediens = intent.getStringExtra("allRecipeIngrediens")
+        val allRecipeTime = intent.getStringExtra("allRecipeCooktime")*/
+
+        val allRecipeImage = arguments?.getString("allRecipeImage")
+        val allRecipeTitle = arguments?.getString("allRecipeTitle")
+        val allRecipeCategory = arguments?.getString("allRecipeCategory")
+       // val allRecipeDescription = arguments?.getString("allRecipeDescription")
+      //  val allRecipeIngrediens = arguments?.getString("allRecipeIngrediens")
+        val allRecipeTime = arguments?.getString("allRecipeTime")
+
+        Picasso.with(activity).load(allRecipeImage).into(choosenRecipeImage)
+        choosenRecipeCategory?.text = allRecipeCategory
+        choosenRecipeTime?.text = allRecipeTime
+        choosenRecipeTitle?.text = allRecipeTitle
+
     }
 
     override fun onCreateView(

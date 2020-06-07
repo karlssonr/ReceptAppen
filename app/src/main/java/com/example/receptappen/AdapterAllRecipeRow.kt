@@ -3,6 +3,7 @@ package com.example.receptappen
 import android.app.ActivityOptions
 import android.content.Context
 import android.content.Intent
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -70,26 +71,34 @@ class AdapterAllRecipeRow(private val context: Context, private val listOfRecipe
 
         holder.allRecipeCardView.setOnClickListener {
 
-            holder.intent.putExtra("allRecipeImage", recipe.image)
+     /*       holder.intent.putExtra("allRecipeImage", recipe.image)
             holder.intent.putExtra("allRecipeTitle", recipe.title)
             holder.intent.putExtra("allRecipeCategory", recipe.category)
             holder.intent.putExtra("allRecipeCooktime", recipe.cookTime)
             holder.intent.putExtra("allRecipeDescription", recipe.description)
             holder.intent.putExtra("allRecipeIngrediens", recipe.ingredients)
 
+*/
+
+            holder.bundle.putString("allRecipeImage" , recipe.image )
+            holder.bundle.putString("allRecipeTitle" , recipe.title )
+            holder.bundle.putString("allRecipeCategory" , recipe.category )
+            holder.bundle.putString("allRecipeCooktime" , recipe.cookTime )
+            holder.bundle.putString("allRecipeDescription" , recipe.description )
+            holder.bundle.putString("allRecipeIngrediens" , recipe.ingredients )
+
+                holder.choosenRecipeFragment.arguments = holder.bundle
+                homeFragment.activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.fragment_container, holder.choosenRecipeFragment)?.commit()
 
 
+
+
+/*
 
             context.startActivity(holder.intent)
-           /* homeFragment.activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.fragment_container, ChoosenRecipeFragment.newInstance())?.commit()*/
 
 
-
-  /*           if (it != null) {
-                activity.supportFragmentManager.beginTransaction()
-                    .replace(R.id.fragment_container, ChoosenRecipeFragment.newInstance()).commit()
-            }*/
-
+*/
 
         }
 
@@ -108,7 +117,10 @@ class AdapterAllRecipeRow(private val context: Context, private val listOfRecipe
         var allRecipeCategory = view.findViewById<TextView>(R.id.textView_all_recipe_row_category)
         var allRecipeTime = view.findViewById<TextView>(R.id.textView_all_recipe_row_time)
         val allRecipeCardView = view.findViewById<CardView>(R.id.cardView_all_recipe_row)
-        val intent = Intent(context, ChoosenRecipeActivity::class.java)
+       // val intent = Intent(context, ChoosenRecipeActivity::class.java)
+
+        val bundle = Bundle()
+        val choosenRecipeFragment = ChoosenRecipeFragment()
 
 
 

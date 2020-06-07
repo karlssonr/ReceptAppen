@@ -1,3 +1,4 @@
+/*
 package com.example.receptappen
 
 import android.content.Context
@@ -66,4 +67,4 @@ class ChoosenRecipeActivity : AppCompatActivity() {
 
 
     }
-}
+}*/
