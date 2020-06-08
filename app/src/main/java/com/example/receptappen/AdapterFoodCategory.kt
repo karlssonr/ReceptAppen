@@ -13,7 +13,12 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.food_category_row.view.*
 
 
-class AdapterFoodCategory(private val context : Context, private val homeFragment: HomeFragment): RecyclerView.Adapter<AdapterFoodCategory.CustomViewHolderCategory>() {
+class AdapterFoodCategory(private val context : Context, private val homeFragment: HomeFragment,
+                          private val vegitarianRecipes: List<Recipe>,
+                          private val meatRecipes: List<Recipe>,
+                          private val chickenRecipes: List<Recipe>,
+                          private val fishRecipes: List<Recipe>,
+                          private val dessertRecipes: List<Recipe>): RecyclerView.Adapter<AdapterFoodCategory.CustomViewHolderCategory>() {
 
     private val layoutInflator = LayoutInflater.from(context)
 
@@ -39,6 +44,8 @@ class AdapterFoodCategory(private val context : Context, private val homeFragmen
             holder.imageViewCategory.setImageResource(R.drawable.meat)
             holder.textViewCategory.text = foodCategories[0]
             holder.textViewCategory.setBackgroundResource(R.drawable.round_corner_meat)
+
+
 
         }
 
@@ -74,7 +81,10 @@ class AdapterFoodCategory(private val context : Context, private val homeFragmen
         holder.cardviewCategory.setOnClickListener {
 
             if (position == 0) {
-                holder.bundle.putString("category" , foodCategories[0] )
+
+                val recipe = meatRecipes
+
+                holder.bundle.putString("meatCategory" , foodCategories[0] )
 
                 holder.choosenCategoryFragment.arguments = holder.bundle
                 homeFragment.activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.fragment_container, holder.choosenCategoryFragment)?.commit()
@@ -129,8 +139,7 @@ class AdapterFoodCategory(private val context : Context, private val homeFragmen
 
        val bundle = Bundle()
        val choosenCategoryFragment = ChoosenCategoryFragment()
-       // val fragmentManager = homeFragment.fragmentManager
-        //val fragmentTransaction = fragmentManager?.beginTransaction()
+
 
         var foodCategotyPosition = 0
 

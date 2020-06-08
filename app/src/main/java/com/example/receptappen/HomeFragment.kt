@@ -135,26 +135,28 @@ class HomeFragment : Fragment() {
         loadRecipeIntoRandomRecipeLayout()
 
         foodCategoryRecyclerview.layoutManager = LinearLayoutManager(activity, OrientationHelper.HORIZONTAL, false)
-        foodCategoryRecyclerview.adapter = AdapterFoodCategory(activity, this)
+        foodCategoryRecyclerview.adapter = AdapterFoodCategory(activity, this, DataStorage.vegitarianRecipes, DataStorage.meatRecipes, DataStorage.chickenRecipes, DataStorage.fishRecipes, DataStorage.dessertRecipes)
 
         vegRowRecyclerview.layoutManager = LinearLayoutManager(activity, OrientationHelper.HORIZONTAL, false)
-        vegRowRecyclerview.adapter = AdapterVegRow(activity, DataStorage.vegitarianRecipes)
+        vegRowRecyclerview.adapter = AdapterVegRow(activity, DataStorage.vegitarianRecipes, this)
 
         chickenRecyclerView.layoutManager = LinearLayoutManager(activity, OrientationHelper.HORIZONTAL, false)
-        chickenRecyclerView.adapter = AdapterChickenRow(activity, DataStorage.chickenRecipes)
+        chickenRecyclerView.adapter = AdapterChickenRow(activity, DataStorage.chickenRecipes, this)
 
         fishRecyclerview.layoutManager = LinearLayoutManager(activity, OrientationHelper.HORIZONTAL, false)
-        fishRecyclerview.adapter = AdapterFishRow(activity, DataStorage.fishRecipes)
+        fishRecyclerview.adapter = AdapterFishRow(activity, DataStorage.fishRecipes, this)
 
 
             meatRecyclerview.layoutManager = LinearLayoutManager(activity, OrientationHelper.HORIZONTAL, false)
-            meatRecyclerview.adapter = AdapterMeatRow(activity, DataStorage.meatRecipes)
+            meatRecyclerview.adapter = AdapterMeatRow(activity, DataStorage.meatRecipes, this)
 
         dessertRecyclerview.layoutManager = LinearLayoutManager(activity, OrientationHelper.HORIZONTAL, false)
-        dessertRecyclerview.adapter = AdapterDessertRow(activity, DataStorage.dessertRecipes)
+        dessertRecyclerview.adapter = AdapterDessertRow(activity, DataStorage.dessertRecipes, this)
 
         allRecipeRecyclerview.layoutManager = LinearLayoutManager(activity, OrientationHelper.HORIZONTAL, false)
         allRecipeRecyclerview.adapter = AdapterAllRecipeRow(activity, DataStorage.listOfRecipes, this)
+
+
 
 
 
