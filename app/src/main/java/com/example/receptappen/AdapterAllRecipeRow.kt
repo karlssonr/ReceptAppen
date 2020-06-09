@@ -84,14 +84,6 @@ class AdapterAllRecipeRow(private val context: Context, private val listOfRecipe
 
 
 
-
-/*
-
-            context.startActivity(holder.intent)
-
-
-*/
-
         }
 
 

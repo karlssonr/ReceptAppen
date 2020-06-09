@@ -35,7 +35,7 @@ class AdapterAddIngrediens(private val context: Context, private val ingredients
 
         holder.textIngrediens.text = ingredient
         holder.ingredientPosition = position
-       // holder.textVolume.text = ingredient.volume
+
     }
 
     fun deleteIngredient(position: Int) {
@@ -49,7 +49,7 @@ class AdapterAddIngrediens(private val context: Context, private val ingredients
         var ingredientPosition = 0
         val textIngrediens = itemView.findViewById<TextView>(R.id.textView_ingredient)
         val deleteIngredientButton = itemView.findViewById<ImageButton>(R.id.imageButton_delete_ingredient)
-        /*val textVolume = itemView.findViewById<TextView>(R.id.textView_volume)*/
+
 
         init {
             deleteIngredientButton.setOnClickListener {

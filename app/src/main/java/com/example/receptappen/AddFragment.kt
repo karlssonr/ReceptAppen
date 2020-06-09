@@ -148,7 +148,9 @@ class AddFragment : Fragment() {
 
         saveRecipeButton.setOnClickListener {
 
-            if( titleTextInput.text.toString() == "" ) {
+
+
+            if( DataStorage.ingredients == null ) {
                 Toast.makeText(activity, "Ange titel", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
 

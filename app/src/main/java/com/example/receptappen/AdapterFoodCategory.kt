@@ -141,8 +141,6 @@ class AdapterFoodCategory(private val context : Context, private val homeFragmen
        val choosenCategoryFragment = ChoosenCategoryFragment()
 
 
-        var foodCategotyPosition = 0
-
     }
 
 }

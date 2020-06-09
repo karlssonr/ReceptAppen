@@ -53,51 +53,6 @@ class HomeScreenActivity : AppCompatActivity() {
         setContentView(R.layout.activity_home_screen_recycle)
 
 
-/*
-        randomRecipeImage = findViewById<ImageView>(R.id.imageView_random_recipe)
-        randomRecipeCategory = findViewById(R.id.textView_random_recipe_catagory)
-        randomRecipeCookTime = findViewById(R.id.textView_random_recipe_time_to_cook)
-        randomRecipeTitle = findViewById(R.id.textView_random_recipe_title)
-
-
-
-        val recipeList = mutableListOf<Recipe>()
-        val recipeRef = db.collection("recipes")
-
-        recipeRef.get().addOnSuccessListener { documentSnapshot ->
-            for (document in documentSnapshot.documents) {
-                val newRecipe = document.toObject(Recipe::class.java)
-                if (newRecipe != null)
-                    recipeList.add(newRecipe!!)
-                println("!!! : ${newRecipe}")
-            }
-
-            for (recipe in recipeList) {
-                if (recipe.title == "test1") {
-                   // randomRecipeImage = recipe.image
-                    randomRecipeTitle.text = recipe.title
-                    randomRecipeCookTime.text = recipe.cookTime
-                    randomRecipeCategory.text = recipe.category
-
-                }
-
-            }
-
-
-        }
-
-
-
-
-
-
-
-
-        recyclerView_food_category.layoutManager = LinearLayoutManager(this, OrientationHelper.HORIZONTAL, false)
-        recyclerView_food_category.adapter = AdapterFoodCategory()
-
-        recyclerView_popular_row.layoutManager = LinearLayoutManager(this, OrientationHelper.HORIZONTAL, false)
-        recyclerView_popular_row.adapter = AdapterVegRow()*/
 
         bottomNavigation.setOnNavigationItemSelectedListener(onNavigationItemSelectedListener)
         replaceFragment(HomeFragment())

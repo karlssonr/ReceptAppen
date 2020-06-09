@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
 
 
     private fun login() {
-     /*   val emailText = findViewById<View>(R.id.emailText) as EditText
+        val emailText = findViewById<View>(R.id.emailText) as EditText
         val passwordText = findViewById<View>(R.id.passwordText) as EditText
 
         var email = emailText.text.toString()
@@ -49,18 +49,18 @@ class MainActivity : AppCompatActivity() {
 
         if (!email.isEmpty() && !password.isEmpty()) {
 
-            mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener { task ->*/
+            mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener { task ->
                 val intent = Intent(this, HomeScreenActivity::class.java)
-               // if (task.isSuccessful) {
+                if (task.isSuccessful) {
                     startActivity(intent)
-              /*  } else {
+                } else {
                     Toast.makeText(this, "Fel användarnamn eller lösenord", Toast.LENGTH_LONG).show()
                 }
             }
 
         } else {
             Toast.makeText(this, "Fyll i inloggnings uppgifter", Toast.LENGTH_LONG).show()
-        } */
+        }
     }
 
 }
